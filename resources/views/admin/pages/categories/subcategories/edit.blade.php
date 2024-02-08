@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', "Editar a categoria {$subcategory->name}")
+@section('title', "Editar a Sub categoria {$subcategory->name}")
 
 @section('content_header')
-    <h1>Editar a categoria {{ $subcategory->name }}</h1>
+    <h1>Editar a Sub categoria {{ $subcategory->name }}</h1>
 @stop
 
 @section('content')

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('anchor_url');
             $table->string('image');
             $table->text('color_card');
-            $table->text('color_icon');
+            $table->text('color_name');
             $table->uuid('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

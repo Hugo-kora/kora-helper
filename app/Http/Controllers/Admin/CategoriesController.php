@@ -28,23 +28,41 @@ class CategoriesController extends Controller
     {
         $categories = $this->categories::all();
 
-        return view('admin.pages.categories.create',compact('categories'));
+        return view('admin.pages.categories.create', compact('categories'));
+    }
+
+    public function subcategorias($categoriaId)
+    {
+        $categoria = $this->categories->findOrFail($categoriaId);
+        $subcategorias = $categoria->subcategories()->get();
+
+        return view('details', compact('subcategorias'));
     }
 
     public function store(StoreUpdateCategories $request)
     {
-            $data = $request->all();
+        // Conta o número atual de categorias
+        $numCategories = $this->categories::count();
 
-            $data['url'] = Str::kebab($data['name']);
-
-            if ($request->hasFile('image') && $request->image->isValid()) {
-                $data['image'] = $request->image->store('categories');
-            }
-
-            $this->categories->create($data);
-
+        // Verifica se já existem 6 categorias
+        if ($numCategories >= 6) {
             return redirect()->route('categories.index')
-                             ->with('success', 'Contato adicionado com sucesso.');
+                ->with('error', 'Não é possível adicionar mais categorias. O limite máximo foi atingido.');
+        }
+
+        // Se ainda houver espaço para outra categoria
+        $data = $request->all();
+
+        $data['url'] = Str::kebab($data['name']);
+
+        if ($request->hasFile('image') && $request->image->isValid()) {
+            $data['image'] = $request->image->store('categories');
+        }
+
+        $this->categories->create($data);
+
+        return redirect()->route('categories.index')
+            ->with('success', 'Contato adicionado com sucesso.');
     }
 
     public function show($id)
@@ -76,7 +94,7 @@ class CategoriesController extends Controller
         $category->update($data);
 
         return redirect()->route('categories.index')
-                         ->with('success', 'Categoria atualizada com sucesso.');
+            ->with('success', 'Categoria atualizada com sucesso.');
     }
 
     public function destroy($id)
@@ -91,29 +109,22 @@ class CategoriesController extends Controller
         $category->delete();
 
         return redirect()->route('categories.index')
-                         ->with('success', 'Categoria e suas subcategorias foram excluídas com sucesso.');
+            ->with('success', 'Categoria e suas subcategorias foram excluídas com sucesso.');
     }
 
-    // public function search(Request $request)
-    // {
-    //     $filters = $request->all();
+    public function search(Request $request)
+    {
+        $filters = $request->only('filter');
 
-    //     $facs = $this->facs->latest()->paginate();
+        $categories = $this->categories
+            ->where(function ($query) use ($request) {
+                if ($request->filter) {
+                    $query->where('name', 'LIKE', "%{$request->filter}%");
+                }
+            })
+            ->latest()
+            ->paginate();
 
-    //     $contacts = $this->repository
-    //                         ->where(function($query) use ($request) {
-    //                             if ($request->filter) {
-    //                                 $query->orWhere('name', 'LIKE', "%{$request->filter}%");
-    //                                 $query->orWhere('surname', $request->filter);
-    //                             }
-    //                         })
-    //                         ->latest()
-    //                         ->paginate();
-
-    //     return view('admin.pages.contacts.index', compact('contacts', 'filters','facs'));
-    // }
-
-    // public function searchFacs(Request $request)
-    // {
-    //     $filters = $request->all();
+        return view('admin.pages.categories.index', compact('categories', 'filters'));
+    }
 }

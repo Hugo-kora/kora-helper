@@ -36,9 +36,9 @@
                 </div>
                 <div class="form-group">
                     <label>Cor do ícone:</label>
-                    <select name="color_icon" class="custom-select">
-                        <option value="-azul" style="background-color: #153c53; color: white;" {{ ($category->color_icon ?? old('color')) == '153c53' ? 'selected' : '' }}>Cor 1</option>
-                        <option value="-beje" style="background-color: #efe1d3; color: white;" {{ ($category->color_icon ?? old('color')) == 'efe1d3' ? 'selected' : '' }}>Cor 2</option>
+                    <select name="color_name" class="custom-select">
+                        <option value="-azul" style="background-color: #153c53; color: white;" {{ ($category->color_name ?? old('color')) == '153c53' ? 'selected' : '' }}>Cor 1</option>
+                        <option value="-beje" style="background-color: #efe1d3; color: white;" {{ ($category->color_name ?? old('color')) == 'efe1d3' ? 'selected' : '' }}>Cor 2</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Criar Subcategoria</button>

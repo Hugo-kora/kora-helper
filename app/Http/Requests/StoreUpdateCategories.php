@@ -24,8 +24,9 @@ class StoreUpdateCategories extends FormRequest
         $id = $this->segment(3);
         return [
             'name' => ['required', 'string', 'min:2', 'max:255'],
-            'image' => ['mimes:jpg,bmp,png,ico,svg'],
-            'anchor_url' => ['required'],
+            'image' => ['required','mimes:jpg,bmp,png,ico,svg'],
+            'color_card'=> ['required'],
+            'color_name' => ['required'],
         ];
     }
 
@@ -37,9 +38,12 @@ class StoreUpdateCategories extends FormRequest
             'name.min' => 'O campo de nome deve ter pelo menos 2 caracteres.',
             'name.max' => 'O campo de nome não deve exceder 255 caracteres.',
 
+            'color_card' => 'Você precisa informar a cor do card',
+            'color_name' => 'Você precisa informar a cor do nome',
+
+            'image.required' => 'O campo de Imagem do icone é obrigatório',
             'image.mimes' => 'A imagem deve ser do tipo jpg, bmp, svg ou png.',
 
-            'anchor_url.required' => 'A Url Externa é obrigatória.',
         ];
     }
 }

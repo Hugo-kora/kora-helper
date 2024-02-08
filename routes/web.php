@@ -36,7 +36,7 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
             ->name('profiles.syncPermissions');
         Route::any('profiles/{id}/permissions/create', [PermissionProfileController::class,'permissionsAvailable'])->name('profiles.permissions.available');
         Route::get('profiles/{id}/permissions', [PermissionProfileController::class,'permissions'])->name('profiles.permissions');
-        Route::any('profiles/search', [ProfileController::class, 'search'])->name('profiles.search');
+        Route::post('profiles/search', [ProfileController::class, 'search'])->name('profiles.search');
         Route::resource('/profiles', ProfileController::class);
 
         Route::post('enviar-convite', [InviteController::class,'sendInvite'])->name('users.enviar-convite');
@@ -44,10 +44,8 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
         Route::any('users/search', [UsersController::class, 'search'])->name('users.search');
         Route::resource('users', UsersController::class);
 
-        Route::get('categories/search', [CategoriesController::class,'search'])->name('categories.search');
+        Route::post('categories/search', [CategoriesController::class,'search'])->name('categories.search');
         Route::resource('categories', CategoriesController::class);
-
-        Route::get('subcategory/search', [SubCategoriesController::class,'search'])->name('subcategories.search');
 
         Route::get('categories/{categoryId}/index', [SubCategoriesController::class, 'index'])->name('categories.subcategories.index');
         Route::get('categories/{categoryId}/subcategories', [SubCategoriesController::class, 'create'])->name('categories.subcategories.create');
@@ -59,9 +57,12 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
         Route::get('subcategories/{id}/edit', [SubCategoriesController::class, 'edit'])->name('subcategories.edit');
         Route::put('subcategories/{id}', [SubCategoriesController::class, 'update'])->name('subcategories.update');
         Route::delete('subcategories/{id}', [SubCategoriesController::class, 'destroy'])->name('subcategories.destroy');
+        Route::post('subcategories/search', [SubCategoriesController::class,'search'])->name('subcategories.search');
+
 
     });
 });
+Route::get('/subcategorias/{categoria}', [CategoriesController::class,'subcategorias'])->name('subcategorias');
 Route::get('/', [SiteController::class,'index'])->name('site.home');
 Route::get('/invite', [SendInviteController::class,'showInviteForm'])->name('invite');
 Route::post('/invite/accept/{token}', [SendInviteController::class,'acceptInvite'])->name('invite.accept');

@@ -45,5 +45,24 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'profiles.syncPermissions', 'description' => 'Vincular permissões aos perfis']);
         Permission::create(['name' => 'profiles.permission.detach', 'description' => 'Remover vinculo entre permissões aos perfis']);
 
+        //categories
+        Permission::create(['name' => 'categories.index', 'description' => 'Listar Categorias']);
+        Permission::create(['name' => 'categories.search', 'description' => 'Buscar Categorias']);
+        Permission::create(['name' => 'categories.create', 'description' => 'Acessar tela de criar Categorias']);
+        Permission::create(['name' => 'categories.store', 'description' => 'Criar Categorias']);
+        Permission::create(['name' => 'categories.show', 'description' => 'Visualizar Categorias']);
+        Permission::create(['name' => 'categories.edit', 'description' => 'Acessar tela de editar Categorias']);
+        Permission::create(['name' => 'categories.update', 'description' => 'Atualizar Categorias']);
+        Permission::create(['name' => 'categories.destroy', 'description' => 'Deletar Categorias']);
+
+        //categories
+        Permission::create(['name' => 'subcategories.index', 'description' => 'Listar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.search', 'description' => 'Buscar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.create', 'description' => 'Acessar tela de criar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.store', 'description' => 'Criar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.show', 'description' => 'Visualizar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.edit', 'description' => 'Acessar tela de editar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.update', 'description' => 'Atualizar Sub Categorias']);
+        Permission::create(['name' => 'subcategories.destroy', 'description' => 'Deletar Sub Categorias']);
     }
 }

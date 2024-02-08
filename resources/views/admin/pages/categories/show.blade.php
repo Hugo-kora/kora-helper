@@ -14,14 +14,6 @@
                 <li>
                     <strong>Nome: </strong> {{ $category->name }}
                 </li>
-                <li>
-                    <strong>Cor do card: </strong>
-                    <div style="width: 90px; height: 90px; background-color: {{ $category->color_card }};"></div>
-                </li>
-                <li>
-                    <strong>Cor do icone: </strong>
-                    <div style="width: 90px; height: 90px; background-color: {{ $category->color_icon }};"></div>
-                </li>
             </ul>
 
             <form action="{{ route('categories.destroy', $category->id) }}" method="POST">

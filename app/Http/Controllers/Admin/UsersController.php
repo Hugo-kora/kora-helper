@@ -75,7 +75,7 @@ class UsersController extends Controller
         }
 
         $data = $request->all();
-        
+
         if ($request->filled('password')) {
             $data['password'] = bcrypt($request->password);
         } else {
@@ -102,7 +102,7 @@ class UsersController extends Controller
 
         $user_id = auth()->user()->id;
         if ($user_id == $id) {
-            return redirect()->back()->with('error', 'Você quer mesmo se deletar do sistema? HA HA HA HA');
+            return redirect()->back()->with('error', 'Você não pode se deletar do sistema');
         }
 
         $user->delete();
@@ -118,7 +118,6 @@ class UsersController extends Controller
                             ->where(function($query) use ($request) {
                                 if ($request->filter) {
                                     $query->orWhere('name', 'LIKE', "%{$request->filter}%");
-                                    $query->orWhere('nomeInGame', 'LIKE', "%{$request->filter}%");
                                     $query->orWhere('email', 'LIKE', "%{$request->filter}%");
                                 }
                             })
@@ -134,9 +133,9 @@ class UsersController extends Controller
         if (!$user) {
             return redirect()->back();
         }
-    
+
         $name = strtolower(str_replace(' ', '', $user->name));
-    
+
 
         $name = preg_replace('/[áàãâä]/ui', 'a', $name);
         $name = preg_replace('/[éèêë]/ui', 'e', $name);
@@ -144,13 +143,13 @@ class UsersController extends Controller
         $name = preg_replace('/[óòõôö]/ui', 'o', $name);
         $name = preg_replace('/[úùûü]/ui', 'u', $name);
         $name = preg_replace('/[ç]/ui', 'c', $name);
-    
+
         $data['password'] = 'lk' . $name . date('Y');
-    
+
         $data['password'] = bcrypt($data['password']);
-    
+
         $user->update($data);
-    
+
         return redirect()->route('users.index');
     }
 }

@@ -41,16 +41,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        
                                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning">Visualizar Usuário</a>
                                         <a href="{{ route('users.profiles', $user->id) }}" class="btn btn-success">Perfil</a>
-                                        <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Ações
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            </div>
-                                        </div>
                                     </div>
                                 </td>
                             </tr>

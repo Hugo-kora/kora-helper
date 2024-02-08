@@ -1,89 +1,113 @@
 /* ESTILO GERAL */
 @font-face {
-    font-family: Kora ;
+    font-family: Kora;
     src: url(Fonts/TTFirsNeue-Light.ttf);
 }
-body{
-    background-color: #153c53;
-    height: 50vh;
+html, body {
+    height: 100%;
+    overflow: hidden;
 }
 
-.interface{
+body {
+    background-color: #153c53;
+}
+
+.topo-do-site {
+    background-image: url("{{ asset("/images/Fundo_site.png") }}");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+    background-attachment: fixed;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #0b243b;
+    padding: 20px;
+    color: #ffffff;
+    overflow-y: auto;
+}
+
+.interface {
     max-width: 100%;
     margin: 0px 0px;
     left: 0px;
 }
-.interface_sub{
+.interface_sub {
     max-width: 100%;
     margin: 0 0 0 0;
     top: 0%;
     left: 0px;
 }
-.flex{
+.flex {
     display: flex;
 }
-.btn-contato button{
+.btn-contato button {
     padding: 10px 40px;
     font-size: 18px;
     font-weight: 600;
-    color: #F5F5F5;
-    background-color: #0B243B;
+    color: #f5f5f5;
+    background-color: #0b243b;
     border: 0;
     border-radius: 3px;
     cursor: pointer;
-    transition: .2s
+    transition: 0.2s;
 }
 
-h2.titulo{
-    color: #0B243B;
+h2.titulo {
+    color: #0b243b;
     font-size: 35px;
     text-align: center;
     padding: 20px 4%;
 }
 
 /* ESTILO DO CABEÇALHO */
-header{
+header {
     padding: 5px 1%;
 }
 
-header > .interface{
+header > .interface {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-header a{
+header a {
     color: #5c5c5c;
     text-decoration: none;
     display: inline-block;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-header a:hover{
-    color: #0B243B;
+header a:hover {
+    color: #0b243b;
     transform: scale(1.05);
 }
 
-header nav ul{
+header nav ul {
     list-style-type: none;
 }
 
-header nav ul li{
+header nav ul li {
     display: inline-block;
     padding: 0 40px;
 }
 
-.btn-contato button:hover, form .btn-enviar input:hover{
+.btn-contato button:hover,
+form .btn-enviar input:hover {
     box-shadow: 0px 0px 8px #ffffff;
     transform: scale(1.05);
 }
 
 /* ESTILO DO TOPO DO SITE */
-section.topo-do-site{
+section.topo-do-site {
     user-select: none;
     background-position-x: center;
     background-position-x: center;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     background-attachment: fixed;
     background-image: url("images/Fundo_site.png");
     background-repeat: no-repeat;
@@ -91,88 +115,110 @@ section.topo-do-site{
     padding: 120px 0%;
 }
 
-section.topo-do-site .flex{
+section.topo-do-site .flex {
     align-items: center;
     justify-content: center;
     gap: 1px;
 }
 
-.topo-do-site h1{
-    color: #F5F5F5;
+.topo-do-site h1 {
+    color: #f5f5f5;
     font-size: 38px;
     line-height: 20px;
 }
 
-.topo-do-site .txt-topo-site p{
-    color: #F5F5F5;
+.topo-do-site .txt-topo-site p {
+    color: #f5f5f5;
     margin: 0 0 0 0;
 }
 
-
 /*SUB AREAS*/
-section.topo-do-subarea{
-    background-color: #FFFFFF;
+section.topo-do-subarea {
+    background-color: #ffffff;
     padding: 10px 4%;
 }
 
-section.topo-do-subarea .flex{
+section.topo-do-subarea .flex {
     justify-content: center;
     gap: 0px;
 }
 
-.topo-do-subarea h1{
-    color: #F5F5F5;
+.topo-do-subarea h1 {
+    color: #f5f5f5;
     font-size: 38px;
     line-height: 20px;
 }
 
-.topo-do-subarea .txt-topo-subarea p{
-    color: #F5F5F5;
+.topo-do-subarea .txt-topo-subarea p {
+    color: #f5f5f5;
 }
 
-
 /* ESTILO DAS ESPECIALIDADES */
-section.processos{
+section.processos {
     padding: 0px 0px;
     font-family: "Kora";
     text-decoration: none;
     margin: 0px 0px;
 }
-section.processos .flex{
+section.processos .flex {
     gap: 0px;
 }
-.processos .processos-box-azul{
+
+.logo {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+
+.processos {
+    position: relative;
+    z-index: 1;
+}
+
+.processos .processos-box-azul {
     top: 50%;
     text-align: center;
     user-select: none;
-    color:#f5f5f5;
+    color: #f5f5f5;
     padding: 20px;
     border-radius: 1px;
-    transition: .2s;
-    background-color: #0B243B;
+    transition: 0.2s;
+    background-color: #0b243b;
     width: 200px;
     height: 200px;
     text-decoration: none;
 }
 
-a:link{ text-decoration:none; color: #003545;}
-a:visited{text-decoration:none; color: #003545;}
-a:hover{text-decoration:none; color: #003545;}
-a:active{text-decoration:none; color: #003545;}
+a:link {
+    text-decoration: none;
+    color: #003545;
+}
+a:visited {
+    text-decoration: none;
+    color: #003545;
+}
+a:hover {
+    text-decoration: none;
+    color: #003545;
+}
+a:active {
+    text-decoration: none;
+    color: #003545;
+}
 
-
-.processos .processos-box-azul:hover{
+.processos .processos-box-azul:hover {
     transform: scale(1.01);
     box-shadow: 0 0 0px #f5f5f5a9;
 }
 
-.processos .processos-box-azul i{
+.processos .processos-box-azul i {
     align-self: center;
     font-size: 45px;
     color: #f5f5f5;
 }
 
-.processos .processos-box-azul h3{
+.processos .processos-box-azul h3 {
     text-align: center;
     font-size: 22px;
     margin: 15px 0;
@@ -180,98 +226,98 @@ a:active{text-decoration:none; color: #003545;}
 
 /* BOX NULO*/
 
-.processos .processos-box-nulo{
+.processos .processos-box-nulo {
     top: 50%;
     text-align: center;
     user-select: none;
-    color:#f5f5f5;
+    color: #f5f5f5;
     padding: 20px;
     border-radius: 1px;
     margin-top: 0px;
-    transition: .2s;
+    transition: 0.2s;
     /*background-color: #f5f5f5a9;*/
     width: 200px;
     height: 200px;
 }
-.processos .processos-box-nulo:hover{
+.processos .processos-box-nulo:hover {
     /*
     transform: scale(1.05);*/
     box-shadow: 0 0 0px #f5f5f5a9;
 }
-.processos .processos-box-nulo i{
+.processos .processos-box-nulo i {
     font-size: 35px;
     /*color: #f5f5f5;*/
 }
-.processos .processos-box-nulo h3{
+.processos .processos-box-nulo h3 {
     font-size: 15px;
     margin: 15px 0;
 }
 /* BOX BRANCO */
-.processos .processos-box-beje{
+.processos .processos-box-beje {
     top: 50%;
     text-align: center;
     user-select: none;
-    color:#0B243B;
+    color: #0b243b;
     padding: 20px;
     border-radius: 1px;
     margin-top: 0px;
-    transition: .2s;
+    transition: 0.2s;
     background-color: #efe1d3;
     width: 200px;
     height: 200px;
     text-decoration: none;
 }
-.processos .processos-box-beje:hover{
+.processos .processos-box-beje:hover {
     transform: scale(1.01);
     box-shadow: 0 0 0px #f5f5f5a9;
 }
-.processos .processos-box-beje i{
+.processos .processos-box-beje i {
     font-size: 45px;
-    color: #0B243B;
+    color: #0b243b;
 }
-.processos .processos-box-beje h3{
+.processos .processos-box-beje h3 {
     text-align: center;
     font-size: 22px;
     margin: 15px 0;
 }
 /*BOX CINZA*/
-.processos .processos-box-azul-claro{
+.processos .processos-box-azul-claro {
     top: 50%;
     text-align: center;
     user-select: none;
-    color:#f5f5f5;
+    color: #f5f5f5;
     padding: 20px;
     border-radius: 1px;
     margin-top: 0px;
-    transition: .2s;
+    transition: 0.2s;
     background-color: #a2c9e1;
     width: 200px;
     height: 200px;
     text-decoration: none;
 }
 
-.processos .processos-box-azul-claro:hover{
+.processos .processos-box-azul-claro:hover {
     transform: scale(1.01);
     box-shadow: 0 0 0px #f5f5f5a9;
 }
 
-.processos .processos-box-azul-claro i{
+.processos .processos-box-azul-claro i {
     font-size: 45px;
     color: #f5f5f5;
 }
 
-.processos .processos-box-azul-claro h3{
+.processos .processos-box-azul-claro h3 {
     font-size: 22px;
     margin: 15px 0;
 }
 
 /*BOX CINZA CLARO SUB-AREA*/
 
-.processos .processos-box-cinza-claro{
+.processos .processos-box-cinza-claro {
     user-select: none;
     top: 50%;
     text-align: center;
-    color:#0B243B;
+    color: #0b243b;
     padding: 20px;
     border-radius: 5px;
     border-style: solid;
@@ -281,41 +327,40 @@ a:active{text-decoration:none; color: #003545;}
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    transition: .2s;
+    transition: 0.2s;
     width: 150px;
     height: 200px;
     text-decoration: none;
-
 }
-.processos .processos-box-cinza-claro:hover{
+.processos .processos-box-cinza-claro:hover {
     transform: scale(1.05);
     box-shadow: 0 0 0px #f5f5f5a9;
 }
 
-.processos .processos-box-cinza-claro i{
+.processos .processos-box-cinza-claro i {
     font-size: 45px;
     color: #f5f5f5;
 }
 
-.processos .processos-box-cinza-claro h3{
+.processos .processos-box-cinza-claro h3 {
     font-size: 25px;
     margin: 15px 0;
 }
 
 /*BOX CINZA CLARO MICRO PROCESSO SUB-AREA*/
 
-.processos .processos-box-micro-cinza-claro{
+.processos .processos-box-micro-cinza-claro {
     user-select: none;
     display: flex;
     align-items: center;
-    color:#f5f5f5;
-    padding: 20px 10px;;
+    color: #f5f5f5;
+    padding: 20px 10px;
     border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    transition: .2s;
+    transition: 0.2s;
     border-style: solid;
     border-width: 1px;
     border-color: #5c5c5c;
@@ -323,26 +368,26 @@ a:active{text-decoration:none; color: #003545;}
     height: 35px;
     text-decoration: none;
 }
-.processos-box-micro-cinza-claro img{
-margin-right: 10px;
+.processos-box-micro-cinza-claro img {
+    margin-right: 10px;
 }
-.processos .processos-box-micro-cinza-claro:hover{
+.processos .processos-box-micro-cinza-claro:hover {
     transform: scale(1.05);
     box-shadow: 0 0 2px darkgray;
 }
-.processos .processos-box-micro-cinza-claro i{
+.processos .processos-box-micro-cinza-claro i {
     font-size: 25px;
-    color: #0B243B;
+    color: #0b243b;
 }
-.processos .processos-box-micro-cinza-claro h3{
+.processos .processos-box-micro-cinza-claro h3 {
     font-size: 15px;
-    color: #0B243B;
+    color: #0b243b;
 }
 /* ESTILO DO FORMULÁRIO DE CONTATO */
-section.formulario{
+section.formulario {
     padding: 80px 4%;
 }
-form{
+form {
     max-width: 500px;
     margin: 0 auto;
     display: flex;
@@ -351,7 +396,8 @@ form{
     gap: 1px;
     margin-top: 40px;
 }
-form input, form textarea{
+form input,
+form textarea {
     width: 100%;
     border: 0;
     outline: 0;
@@ -359,19 +405,25 @@ form input, form textarea{
     border-radius: 15px;
     font-size: 18px;
 }
-form textarea{
+form textarea {
     resize: none;
     max-height: 200px;
 }
-form .btn-enviar{
+form .btn-enviar {
     margin-top: 20px;
     text-align: center;
 }
-form .btn-enviar input{
+form .btn-enviar input {
     width: 120px;
     background-color: #003545;
-    color:#F5F5F5;
+    color: #f5f5f5;
     font-weight: 700;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }

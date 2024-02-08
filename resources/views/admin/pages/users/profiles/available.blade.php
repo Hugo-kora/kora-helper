@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuários disponíveis perfil {$profile->name}')
+@section('title', "Usuários disponíveis")
 
 @section('content_header')
     <ol class="breadcrumb">
@@ -69,20 +69,20 @@
             @else
                 {!! $profiles->links() !!}
             @endif
-        </div>        
+        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const checkboxSelecionarTudo = document.getElementById('selecionar-tudo-botao');
             const checkboxes = document.querySelectorAll('.item-checkbox');
             const checkboxesMobile = document.querySelectorAll('.item-checkbox-mobile');
-    
+
             checkboxSelecionarTudo.addEventListener('change', function () {
                 checkboxes.forEach(checkbox => {
                     checkbox.checked = checkboxSelecionarTudo.checked;
                 });
             });
-    
+
             checkboxesMobile.forEach(checkbox => {
                 checkbox.addEventListener('change', function () {
                     checkboxSelecionarTudo.checked = checkboxesMobile.every(checkbox => checkbox.checked);

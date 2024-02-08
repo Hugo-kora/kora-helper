@@ -15,10 +15,9 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('url');
-            $table->text('anchor_url');
             $table->string('image');
             $table->text('color_card');
-            $table->text('color_icon');
+            $table->text('color_name');
             $table->uuid('created_by')->nullable();
             $table->uuid('updated_by')->nullable();
             $table->uuid('deleted_by')->nullable();

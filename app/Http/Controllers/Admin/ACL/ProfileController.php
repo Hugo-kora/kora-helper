@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\ACL;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProfileRequest;
-use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 

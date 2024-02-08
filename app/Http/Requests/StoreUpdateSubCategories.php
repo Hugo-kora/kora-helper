@@ -28,6 +28,9 @@ class StoreUpdateSubCategories extends FormRequest
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'category_id' => 'required|exists:categories,id',
             'image' => ['mimes:jpg,bmp,png,ico,svg'],
+            'anchor_url' => ['required'],
+            'color_card'=> ['required'],
+            'color_name' => ['required'],
         ];
     }
 
@@ -40,6 +43,9 @@ class StoreUpdateSubCategories extends FormRequest
             'name.max' => 'O campo de nome não deve exceder 255 caracteres.',
 
             'image.mimes' => 'A imagem deve ser do tipo jpg, bmp, svg ou png.',
+
+            'color_card' => 'Você precisa informar a cor do card',
+            'color_name' => 'Você precisa informar a cor do nome',
 
             'category_id' => 'Você precisa informar o ID da categoria',
 

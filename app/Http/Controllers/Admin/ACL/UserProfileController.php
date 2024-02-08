@@ -16,7 +16,7 @@ class UserProfileController extends Controller
     {
         $this->profile = $profile;
         $this->user = $user;
-        
+
     }
 
     public function attachUserProfile(Request $request, $idUser)
@@ -52,14 +52,14 @@ class UserProfileController extends Controller
     public function profilesAvailable(Request $request, $idUser)
     {
         $user = $this->user->find($idUser);
-    
+
         if (!$user) {
             return redirect()->back();
         }
-    
+
         $filters = $request->except('_token');
         $profiles = $user->profilesAvailable($request->filter);
-    
+
         return view('admin.pages.users.profiles.available', compact('user', 'profiles', 'filters'));
     }
 
@@ -84,19 +84,19 @@ class UserProfileController extends Controller
     {
         $profile = $this->profile->find($idProfile);
         $user = $this->user->find($idUser);
-    
+
         if (!$profile || !$user) {
             return redirect()->back();
         }
-    
+
         $user = $profile->user;
-    
+
         if ($user) {
             Auth::logoutOtherDevices($user->password);
         }
-    
+
         $profile->users()->detach($user);
-    
+
         return redirect()->route('users.profiles', $profile->id);
     }
 }
