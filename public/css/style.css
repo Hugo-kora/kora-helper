@@ -1,7 +1,7 @@
 /* ESTILO GERAL */
 @font-face {
     font-family: Kora;
-    src: url(Fonts/TTFirsNeue-Light.ttf);
+    src: url(Fonts/TTFirsNeue-Black.ttf);
 }
 html, body {
     height: 100%;
@@ -162,6 +162,20 @@ section.processos {
 }
 section.processos .flex {
     gap: 0px;
+}
+
+.processos-box {
+    position: relative;
+}
+
+.processos-box::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Ajuste conforme necessário */
+    width: 100%;
+    height: 10px; /* Ajuste conforme necessário */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
 
 .logo {
