@@ -28,14 +28,24 @@ footer {
     background-color: #0b243b;
     padding: 20px;
     color: #ffffff;
-    overflow-y: auto;
 }
 
 .interface {
     max-width: 100%;
-    margin: 0px 0px;
-    left: 0px;
+    width: 100%;
+    max-height: calc(100vh - 120px);
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
 }
+
+@media screen and (max-width: 768px) {
+    .interface {
+        max-height: calc(100vh - 180px);
+    }
+}
+
 .interface_sub {
     max-width: 100%;
     margin: 0 0 0 0;
@@ -165,6 +175,10 @@ section.processos .flex {
 }
 
 .processos-box {
+    width: calc(25% - 10px);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
     position: relative;
 }
 
@@ -186,8 +200,9 @@ section.processos .flex {
 }
 
 .processos {
-    position: relative;
-    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .processos .processos-box-azul {
@@ -219,6 +234,29 @@ a:hover {
 a:active {
     text-decoration: none;
     color: #003545;
+}
+
+.processos .processos-box {
+    position: relative;
+    width: 25%; /* Reduzindo o tamanho dos cartões */
+    max-width: 50; /* Definindo um tamanho máximo */
+    height: auto; /* Altura automática para se ajustar ao conteúdo */
+    margin: 10px; /* Adicionando margem para espaçamento entre os elementos */
+    text-align: center; /* Centralizando o texto */
+    padding: 10px; /* Adicionando algum preenchimento interno */
+    box-sizing: border-box; /* Garantindo que o preenchimento não afete o tamanho total */
+}
+
+.processos .processos-box img {
+    height: 30px; /* Reduzindo o tamanho da imagem */
+    width: 30px; /* Reduzindo o tamanho da imagem */
+    margin-right: 0; /* Removendo a margem direita da imagem */
+    align-self: center; /* Centralizando a imagem verticalmente */
+}
+
+.processos .processos-box h3 {
+    margin: 5px 0; /* Ajustando a margem do texto */
+    font-size: 14px; /* Reduzindo o tamanho do texto */
 }
 
 .processos .processos-box-azul:hover {

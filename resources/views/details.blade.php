@@ -10,23 +10,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     <title>.: Kora Helper :.</title>
-
-    <style>
-        .processos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .processos-box {
-            width: calc(25% - 10px);
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -48,18 +31,25 @@
                                 @foreach ($chunks as $chunk)
                                 <div class="flex processos-coluna">
                                     @foreach ($chunk as $category)
-                                        @if ($category)
-                                        <a href="{{ $category['anchor_url'] }}" target="_blank" style="text-decoration: none;">
-                                        <div class="processos-box{{ $category['color_card'] }}" style="display: flex; align-items: center; cursor: pointer;">
-                                            <img src="{{ url("storage/{$category['image']}") }}" alt="{{ $category['name'] }}" style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                            <div>
-                                                <h3 style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">{{ $category['name'] }}</h3>
-                                            </div>
+                                    @if ($category)
+                                    <a href="{{ $category['anchor_url'] }}" target="_blank" style="text-decoration: none;">
+                                    <div class="processos-box{{ $category['color_card'] }}"
+                                        style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;">
+                                        <img src="{{ url("storage/{$category['image']}") }}"
+                                            alt="{{ $category['name'] }}"
+                                            style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
+                                        <div>
+                                            <h3
+                                                style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
+                                                {{ $category['name'] }}</h3>
                                         </div>
-                                        </a>
-                                        @else
-                                            <div class="processos-box-nulo"></div>
-                                        @endif
+                                    </a>
+                                    </div>
+                                @else
+                                    <div class="processos-box-nulo"
+                                        style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;">
+                                    </div>
+                                @endif
                                     @endforeach
                                 </div>
                             @endforeach

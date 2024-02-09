@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     <title>.: Kora Helper :.</title>
 </head>
+
 <body>
     <header>
         <div class="interface">
@@ -24,20 +26,29 @@
                 <div class="flex">
                     <div class="txt-topo-site">
                         <section class="processos">
-                            <div class="interface" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <div class="interface"
+                                style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                                 @php $chunks = array_chunk($finalCategories, 3); @endphp
                                 @foreach ($chunks as $chunk)
                                     <div class="flex processos-coluna">
                                         @foreach ($chunk as $category)
                                             @if ($category)
-                                            <div class="processos-box{{ $category['color_card'] }}" style="display: flex; align-items: center; cursor: pointer;" onclick="window.location='{{ route('subcategorias', $category['id']) }}';">
-                                                <img src="{{ url("storage/{$category['image']}") }}" alt="{{ $category['name'] }}" style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                <div>
-                                                    <h3 style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">{{ $category['name'] }}</h3>
+                                                <div class="processos-box{{ $category['color_card'] }}"
+                                                    style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;"
+                                                    onclick="window.location='{{ route('subcategorias', $category['id']) }}';">
+                                                    <img src="{{ url("storage/{$category['image']}") }}"
+                                                        alt="{{ $category['name'] }}"
+                                                        style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
+                                                    <div>
+                                                        <h3
+                                                            style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
+                                                            {{ $category['name'] }}</h3>
+                                                    </div>
                                                 </div>
-                                            </div>
                                             @else
-                                                <div class="processos-box-nulo"></div>
+                                                <div class="processos-box-nulo"
+                                                    style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;">
+                                                </div>
                                             @endif
                                         @endforeach
                                     </div>
@@ -52,4 +63,5 @@
     <footer>
     </footer>
 </body>
+
 </html>
