@@ -34,7 +34,7 @@ class CategoriesController extends Controller
     public function subcategorias($categoriaId)
     {
         $categoria = $this->categories->findOrFail($categoriaId);
-        $subcategorias = $categoria->subcategories()->get();
+        $subcategorias = $categoria->subcategories()->get()->toArray();
 
         return view('details', compact('subcategorias'));
     }
