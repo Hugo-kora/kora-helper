@@ -35,7 +35,7 @@
                                             @if ($category)
                                                 <div class="processos-box{{ $category['color_card'] }}"
                                                     style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;"
-                                                    onclick="window.location='{{ route('subcategorias', $category['id']) }}';">
+                                                    onclick="window.location='{{ route('subcategorias', $category['name']) }}';">
                                                     <img src="{{ url("storage/{$category['image']}") }}"
                                                         alt="{{ $category['name'] }}"
                                                         style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">

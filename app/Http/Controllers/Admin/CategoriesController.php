@@ -31,9 +31,9 @@ class CategoriesController extends Controller
         return view('admin.pages.categories.create', compact('categories'));
     }
 
-    public function subcategorias($categoriaId)
+    public function subcategorias($categoriaName)
     {
-        $categoria = $this->categories->findOrFail($categoriaId);
+        $categoria = $this->categories->where('name', $categoriaName)->firstOrFail();
         $subcategorias = $categoria->subcategories()->get()->toArray();
 
         return view('details', compact('subcategorias'));

@@ -28,7 +28,6 @@ class StoreUpdateSubCategories extends FormRequest
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'category_id' => 'required|exists:categories,id',
             'image' => ['mimes:jpg,bmp,png,ico,svg'],
-            'anchor_url' => ['required'],
             'color_card'=> ['required'],
             'color_name' => ['required'],
         ];
@@ -49,7 +48,6 @@ class StoreUpdateSubCategories extends FormRequest
 
             'category_id' => 'Você precisa informar o ID da categoria',
 
-            'anchor_url.required' => 'A Url Externa é obrigatória.',
         ];
     }
 }

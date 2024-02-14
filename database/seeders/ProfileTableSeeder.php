@@ -15,10 +15,9 @@ class ProfileTableSeeder extends Seeder
     public function run()
     {
 
-        //Gerentes
-       //Profile::create(['name' => 'Administrador','description' => 'Perfil do Administrador']);
-        Profile::create(['name' => 'Gerente','description' => 'Perfil do Gerente']);
-        
-        
+        //Administradores
+       Profile::create(['name' => 'Administrador','description' => 'Perfil do Administrador']);
+
+
     }
 }

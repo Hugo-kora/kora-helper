@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CategorySubCategoryController;
 use App\Http\Controllers\Admin\InviteController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Site\SiteController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -62,7 +63,7 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
 
     });
 });
-Route::get('/subcategorias/{categoria}', [CategoriesController::class,'subcategorias'])->name('subcategorias');
+Route::get('/acessos/{categoria}', [CategoriesController::class,'subcategorias'])->name('subcategorias');
 Route::get('/', [SiteController::class,'index'])->name('site.home');
 Route::get('/invite', [SendInviteController::class,'showInviteForm'])->name('invite');
 Route::post('/invite/accept/{token}', [SendInviteController::class,'acceptInvite'])->name('invite.accept');

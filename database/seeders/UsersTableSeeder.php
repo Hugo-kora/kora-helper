@@ -22,22 +22,9 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Hugo Pascoal',
             'email' => 'hugo_pascoal_@hotmail.com',
-            'password' => bcrypt('123456'),
+            'password' => bcrypt('3TL_81B£#~-x(2%N'),
         ]);
 
-        $user = User::create([
-                'name' => 'Administrador',
-                'email' => 'admin@admin.com',
-                'password' => bcrypt('123456'),
-            ]);
-
-            $adminProfile = Profile::firstOrCreate(['name' => 'Administrador','description' => 'Perfil do Administrador']);
-
-            if ($adminProfile) {
-                $user->profiles()->sync([$adminProfile->id]);
-        }
-
     }
 
-    }
-
+}

@@ -13,7 +13,7 @@
                 @csrf
                 @method('PUT')
 
-                @include('admin.pages.categories.subcategories._partials.form')
+                @include('admin.pages.categories._partials.form')
             </form>
         </div>
     </div>

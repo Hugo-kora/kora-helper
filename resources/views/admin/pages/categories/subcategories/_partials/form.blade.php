@@ -16,6 +16,10 @@
             <input type="file" name="image" class="form-control-file">
         </div>
         <div class="form-group">
+            <label>Link Externo:</label>
+            <input type="text" name="anchor_url" class="form-control" placeholder="Https://www.korasaude.com.br" value="{{ old('anchor_url') }}">
+        </div>
+        <div class="form-group">
             <label>Cor do card:</label>
             <select name="color_card" class="custom-select">
                 <option value="-beje" style="background-color: #efe1d3; color: white;" value="{{ $subcategory->color_card ?? old('color_card') }}" {{ ($category->color_card ?? old('color')) == 'efe1d3' ? 'selected' : '' }}>Cor 1</option>
