@@ -26,8 +26,6 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Nome do Personagem</th>
-                            <th>Apelido do Personagem</th>
                             <th>E-mail</th>
                             <th>Ações</th>
                         </tr>
@@ -36,16 +34,23 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->nomeInGame }}</td>
-                                <td>{{ $user->surnameInGame }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning">Visualizar Usuário</a>
                                         <a href="{{ route('users.profiles', $user->id) }}" class="btn btn-success">Perfil</a>
+                                        <a href="{{ route('user.password.update', $user) }}" class="btn btn-primary"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('reset-password-form-{{ $user->id }}').submit();">
+                                        Redefinir Senha Temporária
+                                    </a>
                                     </div>
                                 </td>
                             </tr>
+                            <form id="reset-password-form-{{ $user->id }}" action="{{ route('user.password.update', $user) }}" method="POST" style="display: none;">
+                                @csrf
+                                @method('PUT')
+                            </form>
                         @endforeach
                     </tbody>
                 </table>

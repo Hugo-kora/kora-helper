@@ -3,51 +3,54 @@
 namespace App\Repositories;
 use App\Models\Permission;
 use App\Models\User;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository{
 
     public function __construct(protected User $user)
     {
-        
+
     }
 
-    public function createUser(array $data)
+    public function createUser(array $data, array $profileIds)
     {
-        $name = strtolower(str_replace(' ', '', $data['name']));
+        // Gere uma senha temporária aleatória
+        $temporaryPassword = Str::random(10); // Gera uma senha temporária de 10 caracteres
 
-        $name = preg_replace('/[áàãâä]/ui', 'a', $name);
-        $name = preg_replace('/[éèêë]/ui', 'e', $name);
-        $name = preg_replace('/[íìîï]/ui', 'i', $name);
-        $name = preg_replace('/[óòõôö]/ui', 'o', $name);
-        $name = preg_replace('/[úùûü]/ui', 'u', $name);
-        $name = preg_replace('/[ç]/ui', 'c', $name);
+        // Crie o usuário no banco de dados
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($temporaryPassword),
+            'must_change_password' => true,
+            'temporary_password' => $temporaryPassword,
+        ]);
 
-        $data['user_id'] = auth()->user();
+        // Associar o usuário com os perfis
+        $user->profiles()->attach($profileIds);
 
-        if (isset($data['foto'])) {
-            $data['foto'] = $data['foto']->store('users');
-        }
+        return $user;
+    }
 
-        $data['password'] = 'lk' . $name . '2023';
-        $data['password'] = bcrypt($data['password']);
-
-        return User::create($data);
+    public function getUserById($userId)
+    {
+        return User::findOrFail($userId);
     }
 
     public function hasPermissions(User $user, string $permissionName): bool
     {
         if ($user->isSuperAdmin()) {
-          
+
             return true;
         }
-   
+
         $profileIds = $user->profiles->pluck('id')->toArray();
-    
+
         return Permission::whereHas('profiles', function ($query) use ($profileIds) {
             $query->whereIn('id', $profileIds);
         })->where('name', $permissionName)->exists();
     }
-    
+
 
 }

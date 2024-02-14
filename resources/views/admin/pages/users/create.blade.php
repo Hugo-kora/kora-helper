@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastre-se')
+@section('title', 'Cadastre Um novo usuário')
 
 @section('content_header')
-    <h1>Cadastre-se</h1>
+    <h1>Cadastre Um novo usuário</h1>
 @stop
 
 @section('content')

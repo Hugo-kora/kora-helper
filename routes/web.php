@@ -4,11 +4,10 @@ use App\Http\Controllers\Admin\ACL\PermissionProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\ACL\UserProfileController;
-use App\Http\Controllers\Admin\SendInviteController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CategorySubCategoryController;
-use App\Http\Controllers\Admin\InviteController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\SubCategoriesController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +21,6 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth:sanctum','acl'])->group(function () {
 
     Route::prefix('admin')->group(function () {
-
         Route::get('/', [DashboardController::class,'home'])->name('admin.index');
 
         Route::get('users/{id}/profile/{idProfile}/detach', [UserProfileController::class,'detachUserProfile'])->name('users.profile.detach');
@@ -39,8 +37,6 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
         Route::get('profiles/{id}/permissions', [PermissionProfileController::class,'permissions'])->name('profiles.permissions');
         Route::post('profiles/search', [ProfileController::class, 'search'])->name('profiles.search');
         Route::resource('/profiles', ProfileController::class);
-
-        Route::post('enviar-convite', [InviteController::class,'sendInvite'])->name('users.enviar-convite');
 
         Route::any('users/search', [UsersController::class, 'search'])->name('users.search');
         Route::resource('users', UsersController::class);
@@ -60,14 +56,16 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
         Route::delete('subcategories/{id}', [SubCategoriesController::class, 'destroy'])->name('subcategories.destroy');
         Route::post('subcategories/search', [SubCategoriesController::class,'search'])->name('subcategories.search');
 
+        Route::get('user/change-password', [UsersController::class, 'showChangePasswordForm'])->name('user.password.change');
+        Route::put('user/change-password', [UsersController::class, 'changePassword'])->name('user.password.update');
+
+        Route::put('/user/change-temporary-password/{user}', [UsersController::class, 'changeTemporaryPassword'])->name('user.password.update');
 
     });
 });
+
 Route::get('/acessos/{categoria}', [CategoriesController::class,'subcategorias'])->name('subcategorias');
 Route::get('/', [SiteController::class,'index'])->name('site.home');
-Route::get('/invite', [SendInviteController::class,'showInviteForm'])->name('invite');
-Route::post('/invite/accept/{token}', [SendInviteController::class,'acceptInvite'])->name('invite.accept');
-
 
 require __DIR__.'/auth.php';
 

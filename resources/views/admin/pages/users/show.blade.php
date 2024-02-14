@@ -17,9 +17,9 @@
                 <li>
                     <strong>E-mail: </strong> {{ $user->email }}
                 </li>
-                <li>
-                    <strong>Empresa: </strong> {{ $user->name }}
-                </li>
+                @if($user->temporary_password)
+                <li><strong>Senha Temporária:</strong>  {{ $user->temporary_password }}</p></li>
+                @endif
                 <li>
                     <strong>Dia da entrada no sistema: </strong> {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
                 </li>

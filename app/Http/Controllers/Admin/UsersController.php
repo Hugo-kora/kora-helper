@@ -3,31 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdatePassword;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\Profile;
-use App\Models\Tenant;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    protected $user, $userRepository,$tenant, $profile;
+    protected $user, $userRepository, $tenant, $profile;
 
-    public function __construct(User $user, UserRepository $userRepository, Tenant $tenant, Profile $profile)
+    public function __construct(User $user, UserRepository $userRepository, Profile $profile)
     {
         $this->user = $user;
         $this->userRepository = $userRepository;
-        $this->tenant = $tenant;
         $this->profile = $profile;
-
     }
 
     public function index()
     {
-        $users = User::latest()->paginate();
+        $users = $this->user::latest()->paginate();
 
         return view('admin.pages.users.index', compact('users'));
     }
@@ -37,23 +36,24 @@ class UsersController extends Controller
 
         $profiles = $this->profile->get();
 
-        return view('admin.pages.users.invite',compact('profiles'));
+        return view('admin.pages.users.create', compact('profiles'));
     }
 
     public function store(StoreUpdateUser $request)
     {
-        $data = $request->only(['name', 'cellphoneReal', 'email', 'urlLive', 'nomeInGame', 'surnameInGame', 'cellphoneInGame', 'passaporte', 'foto']);
+        $data = $request->validated();
 
-        $this->userRepository->createUser($data);
+        $profileIds = $request->input('profiles_ids', []);
+
+        $user = $this->userRepository->createUser($data, $profileIds);
 
         return redirect()->route('users.index');
     }
 
-    public function show($id)
+
+    public function show($userId)
     {
-        if (!$user = $this->user->find($id)) {
-            return redirect()->back();
-        }
+        $user = $this->userRepository->getUserById($userId);
 
         return view('admin.pages.users.show', compact('user'));
     }
@@ -82,13 +82,6 @@ class UsersController extends Controller
             unset($data['password']);
         }
 
-        if($request->foto){
-            if(Storage::exists($user->foto)){
-                Storage::delete($user->foto);
-            }
-            $data['foto'] = $request->foto->store('users');
-        }
-
         $user->update($data);
 
         return redirect()->route('users.index');
@@ -115,40 +108,53 @@ class UsersController extends Controller
         $filters = $request->only('filter');
 
         $users = $this->user
-                            ->where(function($query) use ($request) {
-                                if ($request->filter) {
-                                    $query->orWhere('name', 'LIKE', "%{$request->filter}%");
-                                    $query->orWhere('email', 'LIKE', "%{$request->filter}%");
-                                }
-                            })
-                            ->latest()
-                            ->paginate();
+            ->where(function ($query) use ($request) {
+                if ($request->filter) {
+                    $query->orWhere('name', 'LIKE', "%{$request->filter}%");
+                    $query->orWhere('email', 'LIKE', "%{$request->filter}%");
+                }
+            })
+            ->latest()
+            ->paginate();
 
         return view('admin.pages.users.index', compact('users', 'filters'));
     }
 
-    public function resetPassword($id){
-        $user = $this->user->find($id);
+    public function showChangePasswordForm()
+    {
+        $user = Auth::user();
+        return view('admin.pages.users.change-password', compact('user'));
+    }
 
-        if (!$user) {
-            return redirect()->back();
+    public function changePassword(StoreUpdatePassword $request)
+    {
+
+        if (Auth::check()) {
+            $user = User::find(Auth::id());
+
+            if ($user) {
+                $user->password = bcrypt($request->password);
+                $user->temporary_password = null;
+                $user->must_change_password = false;
+                $user->save();
+
+                return redirect()->route('users.index');
+            }
         }
 
-        $name = strtolower(str_replace(' ', '', $user->name));
+        return redirect()->back()->with('error', 'Não foi possível alterar a senha.');
+    }
 
+    public function changeTemporaryPassword(User $user)
+    {
+        $temporaryPassword = Str::random(10);
 
-        $name = preg_replace('/[áàãâä]/ui', 'a', $name);
-        $name = preg_replace('/[éèêë]/ui', 'e', $name);
-        $name = preg_replace('/[íìîï]/ui', 'i', $name);
-        $name = preg_replace('/[óòõôö]/ui', 'o', $name);
-        $name = preg_replace('/[úùûü]/ui', 'u', $name);
-        $name = preg_replace('/[ç]/ui', 'c', $name);
+        $user->temporary_password = $temporaryPassword;
+        $user->password = Hash::make($temporaryPassword);
+        $user->must_change_password = true;
+        $user->save();
 
-        $data['password'] = 'lk' . $name . date('Y');
-
-        $data['password'] = bcrypt($data['password']);
-
-        $user->update($data);
+        session()->flash('success', 'Senha temporária redefinida com sucesso.');
 
         return redirect()->route('users.index');
     }

@@ -18,6 +18,9 @@ class PermissionsTableSeeder extends Seeder
         //Administradores
         Permission::create(['name' => 'admin.index','description' => 'Acesso ao dashboard']);
 
+        //reset password
+        Permission::create(['name' => 'user.password.change','description' => 'Acesso a Redefinição de senha']);
+        Permission::create(['name' => 'user.password.update','description' => 'Redefinição de senha']);
         //usuários
         Permission::create(['name' => 'users.index', 'description' => 'Listar Usuários']);
         Permission::create(['name' => 'users.search', 'description' => 'Buscar Usuários']);

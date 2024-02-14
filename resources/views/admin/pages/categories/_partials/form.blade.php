@@ -1,9 +1,9 @@
 @include('admin.includes.alerts')
 
-@section('title', 'Cadastre-se')
+@section('title', 'Cadastre Uma nova categoria')
 
 @section('content_header')
-    <h1>Cadastre-se</h1>
+    <h1>adastre Uma nova categoria</h1>
 @stop
 
 <style>

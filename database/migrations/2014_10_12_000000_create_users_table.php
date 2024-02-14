@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('temporary_password')->nullable();
             $table->rememberToken();
 
             $table->uuid('created_by')->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('created_by_email')->nullable();
             $table->string('updated_by_email')->nullable();
             $table->string('deleted_by_email')->nullable();
+            $table->boolean('must_change_password')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });
