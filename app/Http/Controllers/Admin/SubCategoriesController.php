@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUpdateSubCategories;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class SubCategoriesController extends Controller
@@ -80,8 +81,17 @@ class SubCategoriesController extends Controller
         $data = $request->all();
         $data['url'] = Str::kebab($data['name']);
 
-        if ($request->hasFile('image') && $request->image->isValid()) {
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            // Se uma nova imagem for enviada, armazene-a
             $data['image'] = $request->image->store("categories");
+
+            // Se houver uma imagem atual, exclua-a
+            if ($subcategory->image) {
+                Storage::delete($subcategory->image);
+            }
+        } else {
+            // Se nenhuma nova imagem for enviada, mantenha a imagem atual
+            $data['image'] = $request->current_image;
         }
 
         $subcategory->update($data);

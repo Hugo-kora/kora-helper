@@ -12,6 +12,10 @@
         background-color: #153c53;
     }
 
+    ::-webkit-scrollbar{
+        width: 10px;
+    }
+
     .topo-do-site {
         background-image: url("{{ asset("/images/Fundo_site.png") }}");
         background-size: cover;
