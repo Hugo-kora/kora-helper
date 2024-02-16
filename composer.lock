@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac8b894f00bd06c5541b3d29c8d2ebcf",
+    "content-hash": "202e4c3d1420e5f0898d6c9c04132d91",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -6206,6 +6206,50 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2023-03-30T12:28:55+00:00"
+        },
+        {
+            "name": "lucascudo/laravel-pt-br-localization",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucascudo/laravel-pt-BR-localization.git",
+                "reference": "49589685da70d66a391fbeb05e5cf7aa0f9cf848"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucascudo/laravel-pt-BR-localization/zipball/49589685da70d66a391fbeb05e5cf7aa0f9cf848",
+                "reference": "49589685da70d66a391fbeb05e5cf7aa0f9cf848",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lucascudo\\LaravelPtBRLocalization\\LaravelPtBRLocalizationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lucascudo\\LaravelPtBRLocalization\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Cascudo",
+                    "email": "lucas.sisau@gmail.com"
+                }
+            ],
+            "description": "Arquivos de linguagem em Português do Brasil (pt_BR) para Laravel",
+            "support": {
+                "issues": "https://github.com/lucascudo/laravel-pt-BR-localization/issues",
+                "source": "https://github.com/lucascudo/laravel-pt-BR-localization/tree/v2.0.4"
+            },
+            "time": "2023-09-12T13:59:21+00:00"
         },
         {
             "name": "mockery/mockery",
