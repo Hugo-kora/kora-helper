@@ -22,7 +22,7 @@
     </header>
 
     <main>
-        <section class="topo-do-site">
+        <section class="topo-do-site" style="background-image: url('{{ asset('/images/Fundo_branco.png') }}'); ">
             <div class="interface">
                 <div class="flex">
                     <div class="txt-topo-site">
