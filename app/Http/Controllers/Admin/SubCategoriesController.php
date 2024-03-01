@@ -44,7 +44,7 @@ class SubCategoriesController extends Controller
         if ($request->hasFile('image') && $request->image->isValid()) {
             $data['image'] = $request->image->store('categories');
         }
-
+        $data['color_card'] = 'default_value';
         $subcategory = $this->subcategories::create($data);
 
         $category = $this->category::findOrFail($data['category_id']);

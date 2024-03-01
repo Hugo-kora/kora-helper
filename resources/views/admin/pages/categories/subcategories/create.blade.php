@@ -27,18 +27,10 @@
                     <input type="file" name="image" class="form-control-file">
                 </div>
                 <div class="form-group">
-                    <label>Cor do card:</label>
-                    <select name="color_card" class="custom-select">
-                        <option value="-beje" style="background-color: #efe1d3; color: white;" {{ ($category->color_card ?? old('color')) == 'efe1d3' ? 'selected' : '' }}>Cor 1</option>
-                        <option value="-azul-claro" style="background-color: #a2c9e1; color: white;" {{ ($category->color_card ?? old('color')) == 'a2c9e1' ? 'selected' : '' }}>Cor 2</option>
-                        <option value="-azul" style="background-color: #153c53; color: white;" {{ ($category->color_card ?? old('color')) == '153c53' ? 'selected' : '' }}>Cor 3</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label>Cor do ícone:</label>
                     <select name="color_name" class="custom-select">
                         <option value="-azul" style="background-color: #153c53; color: white;" {{ ($category->color_name ?? old('color')) == '153c53' ? 'selected' : '' }}>Cor 1</option>
-                        <option value="-beje" style="background-color: #efe1d3; color: white;" {{ ($category->color_name ?? old('color')) == 'efe1d3' ? 'selected' : '' }}>Cor 2</option>
+                        {{-- <option value="-beje" style="background-color: #efe1d3; color: white;" {{ ($category->color_name ?? old('color')) == 'efe1d3' ? 'selected' : '' }}>Cor 2</option> --}}
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Criar Subcategoria</button>

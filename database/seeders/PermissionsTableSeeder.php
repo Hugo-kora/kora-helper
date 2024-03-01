@@ -25,7 +25,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'users.index', 'description' => 'Listar Usuários']);
         Permission::create(['name' => 'users.search', 'description' => 'Buscar Usuários']);
         Permission::create(['name' => 'users.create', 'description' => 'Acessar tela de criar Usuários']);
-        Permission::create(['name' => 'users.enviar-convite', 'description' => 'Permissão para enviar convites']);
+        Permission::create(['name' => 'users.store', 'description' => 'Permissão para enviar convites']);
         Permission::create(['name' => 'users.show', 'description' => 'Visualizar Usuário']);
         Permission::create(['name' => 'users.update', 'description' => 'Atualizar Usuários']);
         Permission::create(['name' => 'users.destroy', 'description' => 'Deletar Usuários']);
@@ -45,6 +45,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'profiles.edit', 'description' => 'Acessar tela de editar Perfis']);
         Permission::create(['name' => 'profiles.update', 'description' => 'Atualizar Perfis']);
         Permission::create(['name' => 'profiles.permissions', 'description' => 'Visualizar as permissões nos perfis']);
+        Permission::create(['name' => 'profiles.permissions.available', 'description' => 'Tela para ver as permissões disponíveis para associação']);
         Permission::create(['name' => 'profiles.syncPermissions', 'description' => 'Vincular permissões aos perfis']);
         Permission::create(['name' => 'profiles.permission.detach', 'description' => 'Remover vinculo entre permissões aos perfis']);
 
@@ -67,5 +68,10 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'subcategories.edit', 'description' => 'Acessar tela de editar Sub Categorias']);
         Permission::create(['name' => 'subcategories.update', 'description' => 'Atualizar Sub Categorias']);
         Permission::create(['name' => 'subcategories.destroy', 'description' => 'Deletar Sub Categorias']);
+
+        Permission::create(['name' => 'categories.subcategories.index', 'description' => 'Visualizar as permissões do perfil']);
+        Permission::create(['name' => 'categories.subcategories.create', 'description' => 'Acessar a tela de adição das permissões do perfil']);
+        Permission::create(['name' => 'categories.subcategories.store', 'description' => 'adicionar das permissões do perfil']);
+        Permission::create(['name' => 'categories.subcategories', 'description' => 'Mostrar Sub-categorias']);
     }
 }

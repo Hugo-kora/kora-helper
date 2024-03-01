@@ -12,10 +12,6 @@
         background-color: #153c53;
     }
 
-    ::-webkit-scrollbar{
-        width: 10px;
-    }
-
     .topo-do-site {
         background-image: url("{{ asset("/images/Fundo_site.png") }}");
         background-size: cover;
@@ -44,9 +40,53 @@
         overflow: auto;
     }
 
+    .processos-linha {
+        max-width: 80%; /* Definindo uma largura máxima */
+        margin: 0 auto; /* Centralizando horizontalmente */
+    }
+
+    .processos-linha-3 {
+        max-width: 60%; /* Definindo uma largura máxima */
+        margin: 0 auto; /* Centralizando horizontalmente */
+    }
+
+    .processos-linha-4 {
+        max-width: 80%; /* Definindo uma largura máxima */
+        margin: 0 auto 30px;
+         /* Centralizando horizontalmente e adicionando espaçamento inferior */
+    }
+
+    .processos-linha-4 .processos-box {
+        width: calc(25% - 20px); /* Definindo a largura dos cards para ocupar 25% da largura da tela */
+        height: 50px; /* Definindo a altura dos cards */
+        margin: 0 10px; /* Definindo a margem entre os cards */
+    }
+
     .processos .processos-box-nulo {
         display: flex; /* Exibir por padrão em todos os dispositivos */
     }
+
+    .processos .processos-box:nth-child(-n+8) {
+        width: calc(25% - 10px); /* Manter o mesmo tamanho */
+        height: 150px; /* Aumentar a altura */
+    }
+
+    /* Estilo para os itens restantes */
+    .processos .processos-box:nth-child(n+9) {
+        width: calc(20% - 10px); /* Reduzir o tamanho */
+        height: 120px; /* Reduzir a altura */
+    }
+
+    /* Reduzir o tamanho do ícone e do texto para os itens restantes */
+    .processos .processos-box:nth-child(n+9) img {
+        height: 20px; /* Altura menor */
+        width: 20px; /* Largura menor */
+    }
+
+    .processos .processos-box:nth-child(n+9) h3 {
+        font-size: 12px; /* Tamanho do texto menor */
+    }
+
 
     @media screen and (max-width: 768px) {
 
@@ -63,6 +103,9 @@
             flex-direction: column; /* Defina o eixo principal como coluna */
             align-items: center; /* Centralize os itens na horizontal */
             gap: 10px; /* Adicione um espaçamento entre as divs */
+        }
+        .processos-coluna h1{
+            color: #003545;
         }
 
         .processos .processos-box,
@@ -214,7 +257,6 @@
         bottom: -10px; /* Ajuste conforme necessário */
         width: 100%;
         height: 10px; /* Ajuste conforme necessário */
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
     }
 
     .logo {
@@ -281,6 +323,7 @@
     .processos .processos-box h3 {
         margin: 5px 0; /* Ajustando a margem do texto */
         font-size: 14px; /* Reduzindo o tamanho do texto */
+        text-align: center;
     }
 
     .processos .processos-box-azul:hover {
@@ -404,8 +447,8 @@
         margin-left: 5px;
         margin-right: 5px;
         transition: 0.2s;
-        width: 150px;
-        height: 200px;
+        width: 100px;
+        height: 100px;
         text-decoration: none;
     }
     .processos .processos-box-cinza-claro:hover {

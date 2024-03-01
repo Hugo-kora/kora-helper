@@ -28,7 +28,7 @@ class StoreUpdateSubCategories extends FormRequest
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'category_id' => 'required|exists:categories,id',
             'image' => ['required','mimes:jpg,bmp,png,ico,svg'],
-            'color_card'=> ['required'],
+            // 'color_card'=> ['required'],
             'color_name' => ['required'],
         ];
     }

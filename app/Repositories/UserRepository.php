@@ -15,10 +15,8 @@ class UserRepository{
 
     public function createUser(array $data, array $profileIds)
     {
-        // Gere uma senha temporária aleatória
-        $temporaryPassword = Str::random(10); // Gera uma senha temporária de 10 caracteres
+        $temporaryPassword = Str::random(10);
 
-        // Crie o usuário no banco de dados
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -27,7 +25,6 @@ class UserRepository{
             'temporary_password' => $temporaryPassword,
         ]);
 
-        // Associar o usuário com os perfis
         $user->profiles()->attach($profileIds);
 
         return $user;

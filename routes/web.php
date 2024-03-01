@@ -59,7 +59,7 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
         Route::get('user/change-password', [UsersController::class, 'showChangePasswordForm'])->name('user.password.change');
         Route::put('user/change-password', [UsersController::class, 'changePassword'])->name('user.password.update');
 
-        Route::put('/user/change-temporary-password/{user}', [UsersController::class, 'changeTemporaryPassword'])->name('user.password.update');
+        Route::get('user/change-temporary-password/{user}', [UsersController::class, 'changeTemporaryPassword'])->name('user.passwordTemporary.update');
 
     });
 });

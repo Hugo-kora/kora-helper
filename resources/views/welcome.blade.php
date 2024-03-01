@@ -14,9 +14,9 @@
 
 <body>
     <header>
-        <div class="interface">
-            <a href="#" class="logo">
-                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora" style="height: 40px; width: 250px;">
+        <div class="interface" style="margin-top: 3px;">
+            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 5px;">
+                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora" style="height: 20px; width: auto; margin-left: 15px;">
             </a>
         </div>
     </header>
@@ -34,16 +34,14 @@
                                         @foreach ($chunk as $category)
                                             @if ($category)
                                                 <div class="processos-box{{ $category['color_card'] }}"
-                                                    style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;"
+                                                    style="display: flex; align-items: center; cursor: pointer; height: 150px; margin: 0 -1px;"
                                                     onclick="window.location='{{ route('subcategorias', $category['name']) }}';">
                                                     <img src="{{ url("storage/{$category['image']}") }}"
                                                         alt="{{ $category['name'] }}"
                                                         style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                    <div>
-                                                        <h3
+                                                        <h4
                                                             style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
-                                                            {{ $category['name'] }}</h3>
-                                                    </div>
+                                                            {{ $category['name'] }}</h4>
                                                 </div>
                                             @else
                                                 <div class="processos-box-nulo"

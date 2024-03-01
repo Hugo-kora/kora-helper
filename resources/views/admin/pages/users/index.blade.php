@@ -39,11 +39,7 @@
                                     <div class="btn-group" role="group">
                                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning">Visualizar Usuário</a>
                                         <a href="{{ route('users.profiles', $user->id) }}" class="btn btn-success">Perfil</a>
-                                        <a href="{{ route('user.password.update', $user) }}" class="btn btn-primary"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('reset-password-form-{{ $user->id }}').submit();">
-                                        Redefinir Senha Temporária
-                                    </a>
+                                        <a href="{{ route('user.passwordTemporary.update', $user) }}" class="btn btn-primary">Redefinir Senha temporária</a>
                                     </div>
                                 </td>
                             </tr>
