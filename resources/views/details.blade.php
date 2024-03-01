@@ -14,13 +14,12 @@
 
 <body>
     <header>
-        <div class="interface" style="padding: 13px 0;">
-            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 5px;">
-                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora" style="height: 20px; width: auto; margin-left: 15px;">
+        <div class="interface" style="margin-top: 3px;">
+            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 10px;">
+                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora" style="height: 35px; width: auto; margin-left: 80px;">
             </a>
         </div>
     </header>
-
     <main>
         <section class="topo-do-site" style="background-image: url('{{ asset('/images/Fundo_branco.png') }}'); ">
             <div class="interface">
@@ -28,11 +27,9 @@
                     <div class="txt-topo-site">
                         <section class="processos">
                             <div class="interface"
-                                style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                <div class="processos-coluna">
+                            style="position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%);">
                                     <h1 style="text-align: center; color: black;">Como podemos lhe ajudar hoje?</h1>
                                     <div class="flex processos-linha" style="margin-bottom: 5px;">
-                                        <!-- Adicionando margem inferior -->
                                         @php $first_group = array_slice($subcategorias, 0, 3); @endphp
                                         @foreach ($first_group as $category)
                                             @if ($category)

@@ -8,6 +8,7 @@
         overflow: hidden;
     }
 
+
     body {
         background-color: #153c53;
     }
@@ -35,56 +36,54 @@
         width: 100%;
         max-height: calc(100vh - 120px);
         margin: auto;
-        padding: 10px;
+        padding: 25px;
         box-sizing: border-box;
         overflow: auto;
     }
 
     .processos-linha {
-        max-width: 80%; /* Definindo uma largura máxima */
-        margin: 0 auto; /* Centralizando horizontalmente */
+        max-width: 80%;
+        margin: 0 auto;
     }
 
     .processos-linha-3 {
-        max-width: 60%; /* Definindo uma largura máxima */
-        margin: 0 auto; /* Centralizando horizontalmente */
+        max-width: 60%;
+        margin: 0 auto;
     }
 
     .processos-linha-4 {
-        max-width: 80%; /* Definindo uma largura máxima */
+        max-width: 80%;
         margin: 0 auto 30px;
-         /* Centralizando horizontalmente e adicionando espaçamento inferior */
     }
 
     .processos-linha-4 .processos-box {
-        width: calc(25% - 20px); /* Definindo a largura dos cards para ocupar 25% da largura da tela */
-        height: 50px; /* Definindo a altura dos cards */
-        margin: 0 10px; /* Definindo a margem entre os cards */
+        width: calc(25% - 20px);
+        height: 50px;
+        margin: 0 10px;
     }
 
     .processos .processos-box-nulo {
-        display: flex; /* Exibir por padrão em todos os dispositivos */
+        display: flex;
     }
 
     .processos .processos-box:nth-child(-n+8) {
-        width: calc(25% - 10px); /* Manter o mesmo tamanho */
-        height: 150px; /* Aumentar a altura */
+        width: calc(25% - 10px);
+        height: 150px;
     }
 
-    /* Estilo para os itens restantes */
     .processos .processos-box:nth-child(n+9) {
-        width: calc(20% - 10px); /* Reduzir o tamanho */
-        height: 120px; /* Reduzir a altura */
+        width: calc(20% - 10px);
+        height: 120px;
     }
 
-    /* Reduzir o tamanho do ícone e do texto para os itens restantes */
+
     .processos .processos-box:nth-child(n+9) img {
-        height: 20px; /* Altura menor */
-        width: 20px; /* Largura menor */
+        height: 20px;
+        width: 20px;
     }
 
     .processos .processos-box:nth-child(n+9) h3 {
-        font-size: 12px; /* Tamanho do texto menor */
+        font-size: 12px;
     }
 
 
@@ -95,14 +94,14 @@
         }
 
         .processos {
-            margin-top: 100px; /* Compensar o espaço do header */
+            margin-top: 100px;
         }
 
         .processos .processos-coluna {
             display: flex;
-            flex-direction: column; /* Defina o eixo principal como coluna */
-            align-items: center; /* Centralize os itens na horizontal */
-            gap: 10px; /* Adicione um espaçamento entre as divs */
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
         .processos-coluna h1{
             color: #003545;
@@ -181,13 +180,13 @@
     }
 
     /* ESTILO DO TOPO DO SITE */
-    section.topo-do-site {
+    section.topo-do-site{
         user-select: none;
         background-position-x: center;
         background-position-x: center;
-        background-color: #ffffff;
+        background-color: #FFFFFF;
         background-attachment: fixed;
-        background-image: url("images/Fundo_site.png");
+        background-image: url("images/fundo_site.png");
         background-repeat: no-repeat;
         background-size: cover;
         padding: 120px 0%;
@@ -267,8 +266,7 @@
     }
 
     .processos {
-        overflow-y: scroll; /* Adicionando rolagem vertical quando necessário */
-        max-height: 80vh; /* Limitando a altura máxima para evitar a rolagem excessiva */
+        max-height: 80vh;
     }
 
     .processos .processos-box-azul {

@@ -15,8 +15,9 @@
 <body>
     <header>
         <div class="interface" style="margin-top: 3px;">
-            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 5px;">
-                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora" style="height: 20px; width: auto; margin-left: 15px;">
+            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 10px;">
+                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora"
+                    style="height: 35px; width: auto; margin-left: 80px;">
             </a>
         </div>
     </header>
@@ -27,7 +28,7 @@
                     <div class="txt-topo-site">
                         <section class="processos">
                             <div class="interface"
-                                style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                style="position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%);">
                                 @php $chunks = array_chunk($finalCategories, 3); @endphp
                                 @foreach ($chunks as $chunk)
                                     <div class="flex processos-coluna">
@@ -39,9 +40,9 @@
                                                     <img src="{{ url("storage/{$category['image']}") }}"
                                                         alt="{{ $category['name'] }}"
                                                         style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                        <h4
-                                                            style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
-                                                            {{ $category['name'] }}</h4>
+                                                    <h4
+                                                        style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
+                                                        {{ $category['name'] }}</h4>
                                                 </div>
                                             @else
                                                 <div class="processos-box-nulo"
