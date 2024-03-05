@@ -1,546 +1,569 @@
-    /* ESTILO GERAL */
-    @font-face {
-        font-family: Kora;
-        src: url(Fonts/TTFirsNeue-Black.ttf);
-    }
-    html, body {
-        height: 100%;
-        overflow: hidden;
-    }
+ /* ESTILO GERAL */
+ @font-face {
+    font-family: Kora;
+    src: url(Fonts/TTFirsNeue-Black.ttf);
+}
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
 
 
-    body {
-        background-color: #153c53;
-    }
+body {
+    background-color: #153c53;
+}
+
+.topo-do-site {
+    background-image: url("{{ asset("/images/Fundo_site.png") }}");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+    background-attachment: fixed;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #0b243b;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.interface {
+    max-width: 100%;
+    width: 100%;
+    max-height: calc(100vh - 120px);
+    margin: auto;
+    padding: 25px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.processos-linha {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.processos-linha-3 {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.processos-linha-4 {
+    max-width: 80%;
+    margin: 0 auto 30px;
+}
+
+.processos-linha-4 .processos-box {
+    width: calc(25% - 20px);
+    height: 50px;
+    margin: 0 10px;
+}
+
+.processos .processos-box-azul,
+.processos .processos-box-azul-claro,
+.processos .processos-box-beje {
+    box-shadow: 0 0 40px rgba(100, 100, 100, 0.5);
+    margin-bottom: 30px;
+}
+
+.processos-box-azul + .processos-box-azul,
+.processos-box-azul-claro + .processos-box-azul-claro,
+.processos-box-beje + .processos-box-beje,
+.processos-box-azul + .processos-box-azul-claro,
+.processos-box-azul-claro + .processos-box-azul,
+.processos-box-azul + .processos-box-beje,
+.processos-box-beje + .processos-box-azul-claro,
+
+.processos-box-azul ~ .processos-box-azul,
+.processos-box-azul-claro ~ .processos-box-azul-claro,
+.processos-box-beje ~ .processos-box-beje,
+.processos-box-azul ~ .processos-box-azul-claro,
+.processos-box-azul-claro ~ .processos-box-azul,
+.processos-box-azul ~ .processos-box-beje,
+.processos-box-beje ~ .processos-box-azul-claro,
+.processos-box-beje ~ .processos-box-beje {
+    box-shadow: none;
+}
+
+.processos .processos-box:nth-child(-n+8) {
+    width: calc(25% - 10px);
+    height: 150px;
+}
+
+.processos .processos-box:nth-child(n+9) {
+    width: calc(20% - 10px);
+    height: 120px;
+}
+
+
+.processos .processos-box:nth-child(n+9) img {
+    height: 20px;
+    width: 20px;
+}
+
+.processos .processos-box:nth-child(n+9) h3 {
+    font-size: 12px;
+}
+
+.processos-box a.processos-link {
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
 
     .topo-do-site {
-        background-image: url("{{ asset("/images/Fundo_site.png") }}");
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        position: relative;
-        background-attachment: fixed;
-    }
-
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #0b243b;
-        padding: 20px;
-        color: #ffffff;
-    }
-
-    .interface {
-        max-width: 100%;
-        width: 100%;
-        max-height: calc(100vh - 120px);
-        margin: auto;
-        padding: 25px;
-        box-sizing: border-box;
-        overflow: auto;
-    }
-
-    .processos-linha {
-        max-width: 80%;
-        margin: 0 auto;
-    }
-
-    .processos-linha-3 {
-        max-width: 60%;
-        margin: 0 auto;
-    }
-
-    .processos-linha-4 {
-        max-width: 80%;
-        margin: 0 auto 30px;
-    }
-
-    .processos-linha-4 .processos-box {
-        width: calc(25% - 20px);
-        height: 50px;
-        margin: 0 10px;
-    }
-
-    .processos .processos-box-nulo {
-        display: flex;
-    }
-
-    .processos .processos-box:nth-child(-n+8) {
-        width: calc(25% - 10px);
-        height: 150px;
-    }
-
-    .processos .processos-box:nth-child(n+9) {
-        width: calc(20% - 10px);
-        height: 120px;
-    }
-
-
-    .processos .processos-box:nth-child(n+9) img {
-        height: 20px;
-        width: 20px;
-    }
-
-    .processos .processos-box:nth-child(n+9) h3 {
-        font-size: 12px;
-    }
-
-
-    @media screen and (max-width: 768px) {
-
-        .topo-do-site {
-            padding-top: 100px; /* Adicione espaço superior igual à altura do header */
-        }
-
-        .processos {
-            margin-top: 100px;
-        }
-
-        .processos .processos-coluna {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .processos-coluna h1{
-            color: #003545;
-        }
-
-        .processos .processos-box,
-        .processos .processos-box-nulo {
-            display: none !important; /* Adicione !important para garantir que esta regra seja aplicada */
-        }
-    }
-
-    .interface_sub {
-        max-width: 100%;
-        margin: 0 0 0 0;
-        top: 0%;
-        left: 0px;
-    }
-    .flex {
-        display: flex;
-    }
-    .btn-contato button {
-        padding: 10px 40px;
-        font-size: 18px;
-        font-weight: 600;
-        color: #f5f5f5;
-        background-color: #0b243b;
-        border: 0;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    h2.titulo {
-        color: #0b243b;
-        font-size: 35px;
-        text-align: center;
-        padding: 20px 4%;
-    }
-
-    /* ESTILO DO CABEÇALHO */
-    header {
-        padding: 5px 1%;
-    }
-
-    header > .interface {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-    }
-
-    header a {
-        color: #5c5c5c;
-        text-decoration: none;
-        display: inline-block;
-        transition: 0.2s;
-    }
-
-    header a:hover {
-        color: #0b243b;
-        transform: scale(1.05);
-    }
-
-    header nav ul {
-        list-style-type: none;
-    }
-
-    header nav ul li {
-        display: inline-block;
-        padding: 0 40px;
-    }
-
-    .btn-contato button:hover,
-    form .btn-enviar input:hover {
-        box-shadow: 0px 0px 8px #ffffff;
-        transform: scale(1.05);
-    }
-
-    /* ESTILO DO TOPO DO SITE */
-    section.topo-do-site{
-        user-select: none;
-        background-position-x: center;
-        background-position-x: center;
-        background-color: #FFFFFF;
-        background-attachment: fixed;
-        background-image: url("images/fundo_site.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        padding: 120px 0%;
-    }
-
-    section.topo-do-site .flex {
-        align-items: center;
-        justify-content: center;
-        gap: 1px;
-    }
-
-    .topo-do-site h1 {
-        color: #f5f5f5;
-        font-size: 38px;
-        line-height: 20px;
-    }
-
-    .topo-do-site .txt-topo-site p {
-        color: #f5f5f5;
-        margin: 0 0 0 0;
-    }
-
-    /*SUB AREAS*/
-    section.topo-do-subarea {
-        background-color: #ffffff;
-        padding: 10px 4%;
-    }
-
-    section.topo-do-subarea .flex {
-        justify-content: center;
-        gap: 0px;
-    }
-
-    .topo-do-subarea h1 {
-        color: #f5f5f5;
-        font-size: 38px;
-        line-height: 20px;
-    }
-
-    .topo-do-subarea .txt-topo-subarea p {
-        color: #f5f5f5;
-    }
-
-    /* ESTILO DAS ESPECIALIDADES */
-    section.processos {
-        padding: 0px 0px;
-        font-family: "Kora";
-        text-decoration: none;
-        margin: 0px 0px;
-    }
-    section.processos .flex {
-        gap: 0px;
-    }
-
-    .processos-box {
-        width: calc(25% - 10px);
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
-    .processos-box::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -10px; /* Ajuste conforme necessário */
-        width: 100%;
-        height: 10px; /* Ajuste conforme necessário */
-    }
-
-    .logo {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 999;
+        padding-top: 100px; /* Adicione espaço superior igual à altura do header */
     }
 
     .processos {
-        max-height: 80vh;
-    }
-
-    .processos .processos-box-azul {
-        top: 50%;
-        text-align: center;
-        user-select: none;
-        color: #f5f5f5;
-        padding: 20px;
-        border-radius: 1px;
-        transition: 0.2s;
-        background-color: #0b243b;
-        width: 200px;
-        height: 200px;
-        text-decoration: none;
-    }
-
-    a:link {
-        text-decoration: none;
-        color: #003545;
-    }
-    a:visited {
-        text-decoration: none;
-        color: #003545;
-    }
-    a:hover {
-        text-decoration: none;
-        color: #003545;
-    }
-    a:active {
-        text-decoration: none;
-        color: #003545;
-    }
-
-    .processos .processos-box {
-        position: relative;
-        width: 25%; /* Reduzindo o tamanho dos cartões */
-        max-width: 50; /* Definindo um tamanho máximo */
-        height: auto; /* Altura automática para se ajustar ao conteúdo */
-        margin: 10px; /* Adicionando margem para espaçamento entre os elementos */
-        text-align: center; /* Centralizando o texto */
-        padding: 10px; /* Adicionando algum preenchimento interno */
-        box-sizing: border-box; /* Garantindo que o preenchimento não afete o tamanho total */
-    }
-
-    .processos .processos-box img {
-        height: 30px; /* Reduzindo o tamanho da imagem */
-        width: 30px; /* Reduzindo o tamanho da imagem */
-        margin-right: 0; /* Removendo a margem direita da imagem */
-        align-self: center; /* Centralizando a imagem verticalmente */
-    }
-
-    .processos .processos-box h3 {
-        margin: 5px 0; /* Ajustando a margem do texto */
-        font-size: 14px; /* Reduzindo o tamanho do texto */
-        text-align: center;
-    }
-
-    .processos .processos-box-azul:hover {
-        transform: scale(1.01);
-        box-shadow: 0 0 0px #f5f5f5a9;
-    }
-
-    .processos .processos-box-azul i {
-        align-self: center;
-        font-size: 45px;
-        color: #f5f5f5;
-    }
-
-    .processos .processos-box-azul h3 {
-        text-align: center;
-        font-size: 22px;
-        margin: 15px 0;
-    }
-
-    /* BOX NULO*/
-
-    .processos .processos-box-nulo {
-        top: 50%;
-        text-align: center;
-        user-select: none;
-        color: #f5f5f5;
-        padding: 20px;
-        border-radius: 1px;
-        margin-top: 0px;
-        transition: 0.2s;
-        /*background-color: #f5f5f5a9;*/
-        width: 200px;
-        height: 200px;
-    }
-    .processos .processos-box-nulo:hover {
-        /*
-        transform: scale(1.05);*/
-        box-shadow: 0 0 0px #f5f5f5a9;
-    }
-    .processos .processos-box-nulo i {
-        font-size: 35px;
-        /*color: #f5f5f5;*/
-    }
-    .processos .processos-box-nulo h3 {
-        font-size: 15px;
-        margin: 15px 0;
-    }
-    /* BOX BRANCO */
-    .processos .processos-box-beje {
-        top: 50%;
-        text-align: center;
-        user-select: none;
-        color: #0b243b;
-        padding: 20px;
-        border-radius: 1px;
-        margin-top: 0px;
-        transition: 0.2s;
-        background-color: #efe1d3;
-        width: 200px;
-        height: 200px;
-        text-decoration: none;
-    }
-    .processos .processos-box-beje:hover {
-        transform: scale(1.01);
-        box-shadow: 0 0 0px #f5f5f5a9;
-    }
-    .processos .processos-box-beje i {
-        font-size: 45px;
-        color: #0b243b;
-    }
-    .processos .processos-box-beje h3 {
-        text-align: center;
-        font-size: 22px;
-        margin: 15px 0;
-    }
-    /*BOX CINZA*/
-    .processos .processos-box-azul-claro {
-        top: 50%;
-        text-align: center;
-        user-select: none;
-        color: #f5f5f5;
-        padding: 20px;
-        border-radius: 1px;
-        margin-top: 0px;
-        transition: 0.2s;
-        background-color: #a2c9e1;
-        width: 200px;
-        height: 200px;
-        text-decoration: none;
-    }
-
-    .processos .processos-box-azul-claro:hover {
-        transform: scale(1.01);
-        box-shadow: 0 0 0px #f5f5f5a9;
-    }
-
-    .processos .processos-box-azul-claro i {
-        font-size: 45px;
-        color: #f5f5f5;
-    }
-
-    .processos .processos-box-azul-claro h3 {
-        font-size: 22px;
-        margin: 15px 0;
-    }
-
-    /*BOX CINZA CLARO SUB-AREA*/
-
-    .processos .processos-box-cinza-claro {
-        user-select: none;
-        top: 50%;
-        text-align: center;
-        color: #0b243b;
-        padding: 20px;
-        border-radius: 5px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #5c5c5c;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        margin-right: 5px;
-        transition: 0.2s;
-        width: 100px;
-        height: 100px;
-        text-decoration: none;
-    }
-    .processos .processos-box-cinza-claro:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 0px #f5f5f5a9;
-    }
-
-    .processos .processos-box-cinza-claro i {
-        font-size: 45px;
-        color: #f5f5f5;
-    }
-
-    .processos .processos-box-cinza-claro h3 {
-        font-size: 25px;
-        margin: 15px 0;
-    }
-
-    /*BOX CINZA CLARO MICRO PROCESSO SUB-AREA*/
-
-    .processos .processos-box-micro-cinza-claro {
-        user-select: none;
         display: flex;
-        align-items: center;
-        color: #f5f5f5;
-        padding: 20px 10px;
-        border-radius: 5px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        margin-right: 5px;
-        transition: 0.2s;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #5c5c5c;
-        width: 150px;
-        height: 35px;
-        text-decoration: none;
+        flex-wrap: wrap;
+        gap: 20px;
     }
-    .processos-box-micro-cinza-claro img {
-        margin-right: 10px;
-    }
-    .processos .processos-box-micro-cinza-claro:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 2px darkgray;
-    }
-    .processos .processos-box-micro-cinza-claro i {
-        font-size: 25px;
-        color: #0b243b;
-    }
-    .processos .processos-box-micro-cinza-claro h3 {
-        font-size: 15px;
-        color: #0b243b;
-    }
-    /* ESTILO DO FORMULÁRIO DE CONTATO */
-    section.formulario {
-        padding: 80px 4%;
-    }
-    form {
-        max-width: 500px;
-        margin: 0 auto;
+
+    .processos .processos-coluna {
         display: flex;
-        justify-content: center;
         flex-direction: column;
-        gap: 1px;
-        margin-top: 40px;
+        align-items: center;
+        gap: 10px;
     }
-    form input,
-    form textarea {
-        width: 100%;
-        border: 0;
-        outline: 0;
-        padding: 20px 15px;
-        border-radius: 15px;
-        font-size: 18px;
+    .processos-coluna h1{
+        color: #003545;
     }
-    form textarea {
-        resize: none;
-        max-height: 200px;
+
+    .processos .processos-box,
+    .processos .processos-box-nulo {
+        display: none !important; /* Adicione !important para garantir que esta regra seja aplicada */
     }
-    form .btn-enviar {
-        margin-top: 20px;
-        text-align: center;
-    }
-    form .btn-enviar input {
-        width: 120px;
-        background-color: #003545;
-        color: #f5f5f5;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-    }
+}
+
+.interface_sub {
+    max-width: 100%;
+    margin: 0 0 0 0;
+    top: 0%;
+    left: 0px;
+}
+.flex {
+    display: flex;
+}
+.btn-contato button {
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f5f5f5;
+    background-color: #0b243b;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+h2.titulo {
+    color: #0b243b;
+    font-size: 35px;
+    text-align: center;
+    padding: 20px 4%;
+}
+
+/* ESTILO DO CABEÇALHO */
+header {
+    padding: 5px 1%;
+}
+
+header > .interface {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+header a {
+    color: #5c5c5c;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+header a:hover {
+    color: #0b243b;
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0 40px;
+}
+
+.btn-contato button:hover,
+form .btn-enviar input:hover {
+    box-shadow: 0px 0px 8px #ffffff;
+    transform: scale(1.05);
+}
+
+/* ESTILO DO TOPO DO SITE */
+section.topo-do-site{
+    user-select: none;
+    background-position-x: center;
+    background-position-x: center;
+    background-color: #FFFFFF;
+    background-attachment: fixed;
+    background-image: url("images/fundo_site.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 120px 0%;
+}
+
+section.topo-do-site .flex {
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.topo-do-site h1 {
+    color: #f5f5f5;
+    font-size: 38px;
+    line-height: 20px;
+}
+
+.topo-do-site .txt-topo-site p {
+    color: #f5f5f5;
+    margin: 0 0 0 0;
+}
+
+/*SUB AREAS*/
+section.topo-do-subarea {
+    background-color: #ffffff;
+    padding: 10px 4%;
+}
+
+section.topo-do-subarea .flex {
+    justify-content: center;
+    gap: 0px;
+}
+
+.topo-do-subarea h1 {
+    color: #f5f5f5;
+    font-size: 38px;
+    line-height: 20px;
+}
+
+.topo-do-subarea .txt-topo-subarea p {
+    color: #f5f5f5;
+}
+
+/* ESTILO DAS ESPECIALIDADES */
+section.processos {
+    padding: 0px 0px;
+    font-family: "Kora";
+    text-decoration: none;
+    margin: 0px 0px;
+}
+section.processos .flex {
+    gap: 0px;
+}
+
+.processos-box {
+    width: calc(25% - 20px);
+    height: 200px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.processos-box::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Ajuste conforme necessário */
+    width: 100%;
+    height: 10px; /* Ajuste conforme necessário */
+}
+
+.logo {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+
+.processos {
+    max-height: 80vh;
+}
+
+.processos .processos-box-azul {
+    top: 50%;
+    text-align: center;
+    user-select: none;
+    color: #f5f5f5;
+    padding: 20px;
+    border-radius: 1px;
+    transition: 0.2s;
+    background-color: #0b243b;
+    width: 200px;
+    height: 200px;
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: #003545;
+}
+a:visited {
+    text-decoration: none;
+    color: #003545;
+}
+a:hover {
+    text-decoration: none;
+    color: #003545;
+}
+a:active {
+    text-decoration: none;
+    color: #003545;
+}
+
+.processos .processos-box h5 {
+    margin: 0; /* Remover a margem padrão */
+    color: inherit; /* Herdar a cor do texto do pai */
+    text-align: left; /* Alinhar o texto à esquerda */
+    white-space: nowrap; /* Impedir que o texto quebre em várias linhas */
+    overflow: hidden; /* Esconder o texto que transborda do contêiner */
+    text-overflow: ellipsis; /* Exibir reticências (...) para indicar que há mais texto */
+}
+
+.processos .processos-box img {
+    height: 30px; /* Reduzindo o tamanho da imagem */
+    width: 30px; /* Reduzindo o tamanho da imagem */
+    margin-right: 0; /* Removendo a margem direita da imagem */
+    align-self: center; /* Centralizando a imagem verticalmente */
+}
+
+.processos .processos-box h3 {
+    margin: 5px 0; /* Ajustando a margem do texto */
+    font-size: 14px; /* Reduzindo o tamanho do texto */
+    text-align: center;
+}
+
+.processos .processos-box-azul:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 0px #f5f5f5a9;
+}
+
+.processos .processos-box-azul i {
+    align-self: center;
+    font-size: 45px;
+    color: #f5f5f5;
+}
+
+.processos .processos-box-azul h3 {
+    text-align: center;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+/* BOX NULO*/
+
+.processos .processos-box-nulo {
+    top: 50%;
+    text-align: center;
+    user-select: none;
+    color: #f5f5f5;
+    padding: 20px;
+    border-radius: 1px;
+    margin-top: 0px;
+    transition: 0.2s;
+    /*background-color: #f5f5f5a9;*/
+    width: 200px;
+    height: 200px;
+}
+.processos .processos-box-nulo:hover {
+    /*
+    transform: scale(1.05);*/
+    box-shadow: 0 0 0px #f5f5f5a9;
+}
+.processos .processos-box-nulo i {
+    font-size: 35px;
+    /*color: #f5f5f5;*/
+}
+.processos .processos-box-nulo h3 {
+    font-size: 15px;
+    margin: 15px 0;
+}
+/* BOX BRANCO */
+.processos .processos-box-beje {
+    top: 50%;
+    text-align: center;
+    user-select: none;
+    color: #0b243b;
+    padding: 20px;
+    border-radius: 1px;
+    margin-top: 0px;
+    transition: 0.2s;
+    background-color: #efe1d3;
+    width: 200px;
+    height: 200px;
+    text-decoration: none;
+}
+.processos .processos-box-beje:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 0px #f5f5f5a9;
+}
+.processos .processos-box-beje i {
+    font-size: 45px;
+    color: #0b243b;
+}
+.processos .processos-box-beje h3 {
+    text-align: center;
+    font-size: 22px;
+    margin: 15px 0;
+}
+/*BOX CINZA*/
+.processos .processos-box-azul-claro {
+    top: 50%;
+    text-align: center;
+    user-select: none;
+    color: #f5f5f5;
+    padding: 20px;
+    border-radius: 1px;
+    margin-top: 0px;
+    transition: 0.2s;
+    background-color: #a2c9e1;
+    width: 200px;
+    height: 200px;
+    text-decoration: none;
+}
+
+.processos .processos-box-azul-claro:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 0px #f5f5f5a9;
+}
+
+.processos .processos-box-azul-claro i {
+    font-size: 45px;
+    color: #f5f5f5;
+}
+
+.processos .processos-box-azul-claro h3 {
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+/*BOX CINZA CLARO SUB-AREA*/
+
+.processos .processos-box-cinza-claro {
+    user-select: none;
+    top: 50%;
+    text-align: center;
+    color: #0b243b;
+    padding: 20px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #5c5c5c;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    transition: 0.2s;
+    width: 100px;
+    height: 100px;
+    text-decoration: none;
+}
+.processos .processos-box-cinza-claro:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0px #f5f5f5a9;
+}
+
+.processos .processos-box-cinza-claro i {
+    font-size: 45px;
+    color: #f5f5f5;
+}
+
+.processos .processos-box-cinza-claro h3 {
+    font-size: 25px;
+    margin: 15px 0;
+}
+
+/*BOX CINZA CLARO MICRO PROCESSO SUB-AREA*/
+
+.processos .processos-box-micro-cinza-claro{
+    user-select: none;
+    display: flex;
+    align-items: center;
+    color:#f5f5f5;
+    padding: 20px 10px;;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    transition: .2s;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #5c5c5c;
+    width: 150px;
+    height: 35px;
+    text-decoration: none;
+}
+.processos-box-micro-cinza-claro img{
+margin-right: 10px;
+}
+.processos .processos-box-micro-cinza-claro:hover{
+    box-shadow: 0 0 2px darkgray;
+}
+.processos .processos-box-micro-cinza-claro i{
+    font-size: 25px;
+    color: #0B243B;
+}
+.processos .processos-box-micro-cinza-claro h3{
+    font-size: 15px;
+    color: #0B243B;
+}
+/* ESTILO DO FORMULÁRIO DE CONTATO */
+section.formulario {
+    padding: 80px 4%;
+}
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 40px;
+}
+form input,
+form textarea {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 20px 15px;
+    border-radius: 15px;
+    font-size: 18px;
+}
+form textarea {
+    resize: none;
+    max-height: 200px;
+}
+form .btn-enviar {
+    margin-top: 20px;
+    text-align: center;
+}
+form .btn-enviar input {
+    width: 120px;
+    background-color: #003545;
+    color: #f5f5f5;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

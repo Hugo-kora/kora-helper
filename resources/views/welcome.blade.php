@@ -14,10 +14,10 @@
 
 <body>
     <header>
-        <div class="interface" style="margin-top: 3px;">
-            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 10px;">
+        <div class="interface" style="margin-top: 2px;">
+            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 20px;">
                 <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora"
-                    style="height: 35px; width: auto; margin-left: 80px;">
+                    style="height: 25px; width: auto; margin-left: 120px;">
             </a>
         </div>
     </header>
@@ -27,32 +27,32 @@
                 <div class="flex">
                     <div class="txt-topo-site">
                         <section class="processos">
-                            <div class="interface"
-                                style="position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%);">
+                            <div class="interface" style="position: fixed; top: calc(55% - 5px); left: calc(50% - -18px); transform: translate(-50%, -50%); margin-left: -25px; margin-top: 10px;">
                                 @php $chunks = array_chunk($finalCategories, 3); @endphp
                                 @foreach ($chunks as $chunk)
                                     <div class="flex processos-coluna">
                                         @foreach ($chunk as $category)
                                             @if ($category)
                                                 <div class="processos-box{{ $category['color_card'] }}"
-                                                    style="display: flex; align-items: center; cursor: pointer; height: 150px; margin: 0 -1px;"
+                                                    style="display: flex; align-items: center; cursor: pointer; height: 155px; width: 155px; margin: 0 -1px;"
                                                     onclick="window.location='{{ route('subcategorias', $category['name']) }}';">
                                                     <img src="{{ url("storage/{$category['image']}") }}"
                                                         alt="{{ $category['name'] }}"
                                                         style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                    <h4
+                                                    <h5
                                                         style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
-                                                        {{ $category['name'] }}</h4>
+                                                        {{ $category['name'] }}</h5>
                                                 </div>
                                             @else
                                                 <div class="processos-box-nulo"
-                                                    style="display: flex; align-items: center; cursor: pointer; height: 120px; margin: 0 -1px;">
+                                                    style="display: flex; align-items: center; cursor: pointer; height: 155px; width: 155px; margin: 0 -1px;">
                                                 </div>
                                             @endif
                                         @endforeach
                                     </div>
                                 @endforeach
                             </div>
+
                         </section>
                     </div>
                 </div>

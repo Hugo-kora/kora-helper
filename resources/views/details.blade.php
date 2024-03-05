@@ -14,9 +14,10 @@
 
 <body>
     <header>
-        <div class="interface" style="margin-top: 3px;">
-            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 10px;">
-                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora" style="height: 35px; width: auto; margin-left: 80px;">
+        <div class="interface" style="margin-top: 2px;">
+            <a href="{{ route('site.home') }}" class="logo" style="margin-top: 20px;">
+                <img src="{{ asset('images/Logo_Kora.png') }}" alt="Logo da Kora"
+                    style="height: 25px; width: auto; margin-left: 120px;">
             </a>
         </div>
     </header>
