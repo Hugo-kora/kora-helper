@@ -27,22 +27,22 @@
                 <div class="flex">
                     <div class="txt-topo-site">
                         <section class="processos">
-                            <div class="interface" style="position: fixed; top: calc(55% - 5px); left: calc(50% - -18px); transform: translate(-50%, -50%); margin-left: -25px; margin-top: 10px;">
+                            <div class="interface"
+                                style="position: fixed; top: calc(55% - 5px); left: calc(50% - -18px); transform: translate(-50%, -50%); margin-left: -25px; margin-top: 10px;">
                                 @php $chunks = array_chunk($finalCategories, 3); @endphp
                                 @foreach ($chunks as $chunk)
                                     <div class="flex processos-coluna">
                                         @foreach ($chunk as $category)
                                             @if ($category)
-                                                <div class="processos-box{{ $category['color_card'] }}"
-                                                    style="display: flex; align-items: center; cursor: pointer; height: 155px; width: 155px; margin: 0 -1px;"
-                                                    onclick="window.location='{{ route('subcategorias', $category['name']) }}';">
-                                                    <img src="{{ url("storage/{$category['image']}") }}"
-                                                        alt="{{ $category['name'] }}"
-                                                        style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                    <h5
-                                                        style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
+                                            <div class="processos-box{{ $category['color_card'] }}" style="cursor: pointer; height: 155px; width: 155px; margin: 0 -1px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; position: relative;" onclick="window.location='{{ route('subcategorias', $category['name']) }}';">
+                                                <div style="position: absolute; top: 15px; left: 15px;">
+                                                    <img src="{{ url("storage/{$category['image']}") }}" alt="{{ $category['name'] }}" style="height: 40px; width: 40px; margin-right: 10px;">
+                                                </div>
+                                                <div style="align-self: center; text-align: center;">
+                                                    <h5 style="margin: 0; color: {{ $category['color_name'] === '-beje' ? '#efe1d3' : ($category['color_name'] === '-azul' ? '#153c53' : 'cor-padrão') }};">
                                                         {{ $category['name'] }}</h5>
                                                 </div>
+                                            </div>
                                             @else
                                                 <div class="processos-box-nulo"
                                                     style="display: flex; align-items: center; cursor: pointer; height: 155px; width: 155px; margin: 0 -1px;">

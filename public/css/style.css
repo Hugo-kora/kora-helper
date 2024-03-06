@@ -269,10 +269,12 @@ section.processos .flex {
 }
 
 .processos-box {
-    width: calc(25% - 20px);
-    height: 200px;
-    padding: 20px;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centralizando verticalmente */
+    align-items: center; /* Centralizando horizontalmente */
+    text-align: center; /* Centralizando o texto */
+    height: 100%; /* Garantindo que a div ocupe toda a altura da processos-box */
 }
 
 .processos-box::after {
