@@ -11,7 +11,7 @@ class SubCategory extends Model
     use HasFactory, HasUuids, SoftDeletes;
     protected $table = 'subcategories';
 
-    protected $fillable = ['name','url','anchor_url','image','color_card','color_name','category_id','created_at','updated_at','created_by','updated_by','deleted_by','created_by_email','updated_by_email','deleted_by_email'];
+    protected $fillable = ['name','order','url','anchor_url','image','color_card','color_name','category_id','created_at','updated_at','created_by','updated_by','deleted_by','created_by_email','updated_by_email','deleted_by_email'];
 
     public function categories()
     {

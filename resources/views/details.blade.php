@@ -31,83 +31,64 @@
                                 style="position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%);">
                                 <h1 style="text-align: center; color: black;">Como podemos lhe ajudar hoje?</h1>
                                 <div class="flex processos-linha" style="margin-bottom: 5px;">
-                                    @php $first_group = array_slice($subcategorias, 0, 3); @endphp
-                                    @foreach ($first_group as $category)
-                                        @if ($category)
-                                            <div class="processos-box"
-                                                style="display: flex; align-items: center; cursor: pointer; height: 240px;  margin: 0 5px; width: calc(33.33% - 10px); max-width: 190px; border: 1px solid black; border-radius: 10px; position: relative;">
-                                                <div style="position: absolute; top: 15px; left: 15px;">
-                                                    <img src="{{ url("storage/{$category['image']}") }}"
-                                                        alt="{{ $category['name'] }}"
-                                                        style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                </div>
-                                                <div style="display: grid; grid-template-columns: auto auto;">
-                                                    <div>
-                                                        <h3 style="margin: 0;">{{ $category['name'] }}</h3>
-                                                    </div>
-                                                </div>
-                                                @if ($category['anchor_url'])
-                                                    </a> <!-- Fechando o link -->
-                                                @endif
-                                            </div>
-                                        @endif
+                                    @foreach ($subcategorias->take(3) as $category)
+                                        <div class="processos-box" style="display: flex; justify-content: center; align-items: center; cursor: pointer; height: 240px; margin: 0 5px; width: calc(33.33% - 10px); max-width: 190px; border: 1px solid black; border-radius: 10px; position: relative;">
+                                            @if ($category->anchor_url)
+                                                <a href="{{ $category->anchor_url }}" target="_blank" style="text-decoration: none; height: 100%; width: 100%; position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center;">
+                                            @endif
+                                            <img src="{{ url("storage/{$category->image}") }}" alt="{{ $category->name }}" style="position: absolute; top: 15px; left: 15px; height: 40px; width: 40px;">
+                                            <h3 style="margin: 0; position: relative;">{{ $category->name }}</h3>
+                                            @if ($category->anchor_url)
+                                                </a>
+                                            @endif
+                                        </div>
                                     @endforeach
                                 </div>
 
                                 <div class="flex processos-linha processos-linha-3" style="margin-bottom: 30px;">
-                                    @php $second_group = array_slice($subcategorias, 3, 3); @endphp
-                                    @foreach ($second_group as $category)
-                                        @if ($category)
-                                            <div class="processos-box"
-                                                style="display: flex; align-items: center; cursor: pointer; height: 240px;  margin: 0 5px; width: calc(33.33% - 10px); max-width: 190px; border: 1px solid black; border-radius: 10px; position: relative;">
-                                                <div style="position: absolute; top: 15px; left: 15px;">
-                                                    <img src="{{ url("storage/{$category['image']}") }}"
-                                                        alt="{{ $category['name'] }}"
-                                                        style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                </div>
-                                                <div style="display: grid; grid-template-columns: auto auto;">
-                                                    <div>
-                                                        <h3 style="margin: 0;">{{ $category['name'] }}</h3>
-                                                    </div>
-                                                </div>
-                                                @if ($category['anchor_url'])
-                                                    </a> <!-- Fechando o link -->
-                                                @endif
-                                            </div>
-                                        @endif
+                                    @foreach ($subcategorias->skip(3)->take(3) as $category)
+                                        <div class="processos-box" style="display: flex; justify-content: center; align-items: center; cursor: pointer; height: 240px; margin: 0 5px; width: calc(33.33% - 10px); max-width: 190px; border: 1px solid black; border-radius: 10px; position: relative;">
+                                            @if ($category->anchor_url)
+                                                <a href="{{ $category->anchor_url }}" target="_blank" style="text-decoration: none; height: 100%; width: 100%; position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center;">
+                                            @endif
+                                            <img src="{{ url("storage/{$category->image}") }}" alt="{{ $category->name }}" style="position: absolute; top: 15px; left: 15px; height: 40px; width: 40px;">
+                                            <h3 style="margin: 0; position: relative;">{{ $category->name }}</h3>
+                                            @if ($category->anchor_url)
+                                                </a>
+                                            @endif
+                                        </div>
                                     @endforeach
                                 </div>
 
-                                <!-- Itens restantes organizados em linhas de 4 -->
-                                @php $remaining_items = array_slice($subcategorias, 6); @endphp
-                                @php $chunks = array_chunk($remaining_items, 4); @endphp
-                                @foreach ($chunks as $chunk)
-                                    <div class="flex processos-linha processos-linha-4">
-                                        @foreach ($chunk as $category)
-                                            @if ($category)
-                                                <div class="processos-box-micro-cinza-claro">
-                                                    <!-- Modificando estilo dos cards -->
-                                                    @if ($category['anchor_url'])
-                                                        <a href="{{ $category['anchor_url'] }}" target="_blank"
-                                                            style="text-decoration: none; display: flex; align-items: center; height: 100%; width: 100%;">
-                                                            <!-- Modificando para englobar todo o conteúdo do card -->
-                                                    @endif
-                                                    <img src="{{ url("storage/{$category['image']}") }}"
-                                                        alt="{{ $category['name'] }}"
-                                                        style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
-                                                    <div>
-                                                        <h3 style="margin: 0;">
-                                                            <!-- Removendo estilos de cor do texto -->
-                                                            {{ $category['name'] }}</h3>
-                                                    </div>
-                                                    @if ($category['anchor_url'])
-                                                        </a> <!-- Fechando o link -->
-                                                    @endif
-                                                </div>
+                                @php
+                                $remaining_items = $subcategorias->skip(6);
+                                $chunks = $remaining_items->chunk(4);
+                            @endphp
+
+                            @foreach ($chunks as $chunk)
+                                <div class="flex processos-linha processos-linha-4">
+                                    @foreach ($chunk as $category)
+                                        <div class="processos-box-micro-cinza-claro">
+                                            @if ($category->anchor_url)
+                                                <a href="{{ $category->anchor_url }}" target="_blank"
+                                                   style="text-decoration: none; display: flex; align-items: center; height: 100%; width: 100%;">
                                             @endif
-                                        @endforeach
-                                    </div>
-                                @endforeach
+                                                <img src="{{ url("storage/{$category->image}") }}"
+                                                     alt="{{ $category->name }}"
+                                                     style="height: 40px; width: 40px; margin-right: 10px; align-self: flex-start;">
+                                                <div>
+                                                    <h3 style="margin: 0;">
+                                                        {{ $category->name }}
+                                                    </h3>
+                                                </div>
+                                            @if ($category->anchor_url)
+                                                </a>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
                             </div>
                     </div>
         </section>

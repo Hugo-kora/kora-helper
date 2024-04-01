@@ -29,14 +29,10 @@
             <label>Link Externo:</label>
             <input type="text" name="anchor_url" class="form-control" placeholder="Https://www.korasaude.com.br" value="{{ $subcategory->anchor_url ?? old('anchor_url') }}">
         </div>
-        {{-- <div class="form-group">
-            <label>Cor do card:</label>
-            <select name="color_card" class="custom-select">
-                <option value="-beje" style="background-color: #efe1d3; color: white;" {{ ($subcategory->color_card ?? old('color_card')) == '-beje' ? 'selected' : '' }}>Cor 1</option>
-                <option value="-azul-claro" style="background-color: #a2c9e1; color: white;" {{ ($subcategory->color_card ?? old('color_card')) == '-azul-claro' ? 'selected' : '' }}>Cor 2</option>
-                <option value="-azul" style="background-color: #153c53; color: white;" {{ ($subcategory->color_card ?? old('color_card')) == '-azul' ? 'selected' : '' }}>Cor 3</option>
-            </select>
-        </div> --}}
+        <div class="form-group">
+            <label>Posição do (Destaque em Número):</label>
+            <input type="number" name="order" class="form-control" placeholder="Ordem" value="{{ old('order') }}">
+        </div>
         <div class="form-group">
             <label>Cor do ícone:</label>
             <select name="color_name" class="custom-select">

@@ -27,6 +27,10 @@
                     <input type="file" name="image" class="form-control-file">
                 </div>
                 <div class="form-group">
+                    <label>Posição do (Destaque em Número):</label>
+                    <input type="number" name="order" class="form-control" placeholder="Ordem" value="{{ old('order') }}">
+                </div>
+                <div class="form-group">
                     <label>Cor do ícone:</label>
                     <select name="color_name" class="custom-select">
                         <option value="-azul" style="background-color: #153c53; color: white;" {{ ($category->color_name ?? old('color')) == '153c53' ? 'selected' : '' }}>Cor 1</option>

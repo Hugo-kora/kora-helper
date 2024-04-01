@@ -34,10 +34,13 @@ class CategoriesController extends Controller
     public function subcategorias($categoriaName)
     {
         $categoria = $this->categories->where('name', $categoriaName)->firstOrFail();
-        $subcategorias = $categoria->subcategories()->get()->toArray();
+        $subcategorias = $categoria->subcategories()
+        ->orderByRaw("IF(`order` IS NULL OR `order` = 999, 999, `order`) ASC")
+        ->get();
 
         return view('details', compact('subcategorias'));
     }
+
 
     public function store(StoreUpdateCategories $request)
     {
