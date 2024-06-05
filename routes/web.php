@@ -17,7 +17,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::redirect('/', '/acesso');
 
 Route::middleware(['auth:sanctum','acl'])->group(function () {
 
@@ -65,7 +64,7 @@ Route::middleware(['auth:sanctum','acl'])->group(function () {
     });
 });
 Route::get('/acessos/{categoria}', [CategoriesController::class,'subcategorias'])->name('subcategorias');
-Route::get('/acesso', [SiteController::class, 'index'])->name('site.home');
+Route::get('/', [SiteController::class, 'index'])->name('site.home');
 
 require __DIR__.'/auth.php';
 
